@@ -1,0 +1,63 @@
+fetch('http://localhost:5000/users', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify( {
+        firstName: "Kaleb",
+        lastName: "Asefa",
+        age: "23"
+    })
+}).then(res =>{
+    return res.text();
+})
+.then(data => console.log(data))
+.catch(error => console.log(error))
+
+
+
+
+
+const btn = document.querySelector(".btn-upload");
+
+btn.addEventListener("click", (e) => {
+
+    e.preventDefault();
+
+    let userName = document.querySelector(".name").value;
+    let Age = document.querySelector(".age").value;
+    let blood_type = document.querySelector(".blood-type").value;
+    let HS = document.querySelector(".health-state").value;
+    let HLA = document.querySelector(".hla").value;
+    let Date = document.querySelector(".date").value;
+
+    const userData = {
+        name: userName,
+        age: Age,
+        bloodType: blood_type,
+        hs: HS,
+        hla: HLA,
+        date: Date
+    }
+
+    addData(userData);
+
+})
+
+
+function addData(data) {
+    fetch('http://localhost:5000/users', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => {
+        return res.text();
+    })
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
+
+}
+
++

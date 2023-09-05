@@ -1,0 +1,79 @@
+    let donorsData = [];
+
+
+fetch('http://localhost:5000/users/donorsHistory', {
+}).then(res => {
+    return res.json();
+})
+    .then(data => {
+        donorsData = JSON.parse(data);
+        console.log(donorsData);
+
+        for (let i = 0; i < donorsData.length; i++) {
+            // creatDonor(donorsData[i].name, donorsData[i].age, donorsData[i].bloodType);
+            addRow(donorsData[i].name, donorsData[i].age, donorsData[i].bloodType);
+            console.log(donorsData[i].name, donorsData[i].age, donorsData[i].bloodType)
+          
+        }
+
+    })
+    .catch(error => console.log(error))
+
+
+
+// function creatDonor(donor_name, donor_age, donor_bt) {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    const donorInfoDiv = document.createElement("div");
+    donorInfoDiv.classList.add("donor-info");
+
+    const donorTitle = document.createElement("p");
+    donorTitle.classList.add("donor-title");
+    donorTitle.textContent = "Donor";
+
+    const donorNameDiv = document.createElement("div");
+    donorNameDiv.classList.add("donor-name", "info");
+    const donorNameSpan = document.createElement("span");
+    donorNameSpan.classList.add("spans");
+    donorNameSpan.textContent = "Donor Name: ";
+    const donorName = document.createTextNode(donor_name);
+    donorNameDiv.appendChild(donorNameSpan);
+    donorNameDiv.appendChild(donorName);
+
+    const donorAgeDiv = document.createElement("div");
+    donorAgeDiv.classList.add("donor-age", "info");
+    const donorAgeSpan = document.createElement("span");
+    donorAgeSpan.classList.add("spans");
+    donorAgeSpan.textContent = "Age: ";
+    const donorAge = document.createTextNode(donor_age);
+    donorAgeDiv.appendChild(donorAgeSpan);
+    donorAgeDiv.appendChild(donorAge);
+
+    const donorBtDiv = document.createElement("div");
+    donorBtDiv.classList.add("donor-bt", "info");
+    const donorBtSpan = document.createElement("span");
+    donorBtSpan.classList.add("spans");
+    donorBtSpan.textContent = "Blood Type: ";
+    const donorBt = document.createTextNode(donor_bt);
+    donorBtDiv.appendChild(donorBtSpan);
+    donorBtDiv.appendChild(donorBt);
+
+    donorInfoDiv.appendChild(donorTitle);
+    donorInfoDiv.appendChild(document.createElement("hr"));
+    donorInfoDiv.appendChild(donorNameDiv);
+    donorInfoDiv.appendChild(donorAgeDiv);
+    donorInfoDiv.appendChild(donorBtDiv);
+
+    const donorsContainer = document.querySelector(".donors-container");
+    donorsContainer.appendChild(donorInfoDiv);
