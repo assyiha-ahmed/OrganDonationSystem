@@ -1,19 +1,22 @@
 // import { Console } from "console";
 import fs from "fs";
-// import router from "./routes/users.js";
+import router from "./routes/users.js";
+import express from 'express';
+const app = express();
+app.post('http://localhost:5000/users/deleteAproved/:id1',(req,res) => {
+    const id=req.params.id1;
+    console.log(id);
+})
+let donorId;
+let patientId;
 
-
-// let donorId;
-// let patientId;
-
-// router('/nonMatchableId', (sreq,res) =>{
+// router('/nonMatchableId', (req,res) =>{
 //     const {query} = req;
 //     donorId = query.idOne;
 //     patientId = query.idTwo;
-// })
+// });
 
-// console.log(donorId,patientId);
-
+ console.log(donorId,patientId);
 
 let matchedusers = [];
 

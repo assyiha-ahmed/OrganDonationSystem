@@ -25,6 +25,8 @@ btn.addEventListener("click",(e) =>{
         size : Size,
         date: Date
     }
+
+    alert("donors detail added successfully");
     
     addData(donorsData);
  } else {

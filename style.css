@@ -4,7 +4,7 @@ header{
   left: 0;
   width: 100%;
   padding: 20px 100px;
-  background: brown;
+  background: #3498db;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,13 +18,40 @@ header{
   font-family: 'Poppins', sans-serif;
 }
 
-.pages, a{
+.pages {
   position: inherit;
   font-size: 1.1em;
   color: #fff;
   text-decoration: none;
   font-weight: 500;
   margin-left: 40px;
+}
+
+.home{
+  position: inherit;
+  font-size: 1.1em;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 815px;
+}
+
+.dR{
+  position: inherit;
+  font-size: 1.1em;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 900px;
+}
+
+.hospital{
+  position: inherit;
+  font-size: 1.1em;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 1100px;
 }
 
 .OD{
@@ -43,7 +70,7 @@ body{
   background-position: center;
 }
 
-.pages, a::after{
+.pages a::after{
   content: '';
   position: absolute;
   left: 0;
@@ -57,7 +84,7 @@ body{
   transition: transform.5 ;
 } 
 
-.pages, a:hover::after{
+.pages a:hover::after{
   transform-origin: left;
   transform: scaleX(1);
 } 

@@ -44,6 +44,15 @@ router.get('/donorsHistory', (req, res) => {
     res.send(donorsData);
 });
 
+// router.post('/nonMatchableId/:idOne=${id1}&idTwo=${id2}', (req, res) => {
+   
+//     let idOne = req.params.idOne;
+//     let idTwo = req.query.idTwo;
+
+//   console.log(idOne);
+//     res.send(donorsData);
+// });
+
 router.get('/patientsHistory', (req, res) => {
     var patients = fs.readFileSync('./patient.txt', 'utf-8');
     const patientsData = JSON.stringify(patients);

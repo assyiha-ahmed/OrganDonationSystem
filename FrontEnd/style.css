@@ -1,3 +1,5 @@
+
+
 .pages{
     background-color: rgb(0, 0, 8);
     color: white;
@@ -52,3 +54,79 @@
       border-radius: 12px;
     
     }   
+
+    .approvedMatches{
+      color: rgb(12, 3, 3);
+      font-size: 20px;
+      display: flex;
+      float: left;
+      flex-direction: column;
+      text-align: center;
+      border-left: solid 5px rgb(19, 17, 17);
+      margin: 50px;
+
+    }
+    .approvedMatche{
+      color: rgb(12, 3, 3);
+      font-size: 20px;
+      display: flex;
+      float: right;
+      flex-direction: column;
+      text-align: center;
+      border-left: solid 5px rgb(19, 17, 17);
+      margin: 50px;
+
+    }
+    .heading{
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      color: brown;
+      font-size: 30px;
+    }
+
+.approvedMatches{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.singl-match {
+  width: 400px;
+  background-color: #F0F3E8;
+  padding: 20px;
+  padding-bottom: 10px;
+  
+}
+
+.donor-patient {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.donor-title,
+.patient-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+
+}
+
+.donor-title,
+.patient-title {
+  margin-bottom: 5px;
+}
+
+.info {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  margin: 5px 0;
+  padding: 0;
+
+}
+
+.myForm{
+
+}
+

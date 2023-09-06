@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <h1 class="h1">Patients detail</h1>
+    <header>
+        <h1 class="h1">Patients detail</h1>
+    </header>
     <form class="container">
         <div>
             <label for="name">Name:</label>
@@ -18,44 +21,45 @@
             <input type="number" name="age" placeholder="enter your age" min="1" max="70" class="age" id="age" required>
         </div>
         <div>
-        <lable>blood-type:</lable>
-        <select class="blood-type">
-            <option value="O">O</option>
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="AB">AB</option>
-        </select>
-    </div>
-    <div>
-        <lable>HLA: </lable>
-        <div>
-            <label>HLA-A</label>
-            <input type="text" name="HLA-A" class="hla-a" placeholder="00:00">
+            <lable>blood-type:</lable>
+            <select class="blood-type">
+                <option value="O">O</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="AB">AB</option>
+            </select>
         </div>
         <div>
-            <label>HLA-B</label>
-            <input type="text" name="HLA-B" class="hla-b" placeholder="00:00">
+            <lable>HLA: </lable>
+            <div>
+                <label>HLA-A</label>
+                <input type="text" name="HLA-A" class="hla-a" placeholder="00:00">
+            </div>
+            <div>
+                <label>HLA-B</label>
+                <input type="text" name="HLA-B" class="hla-b" placeholder="00:00">
+            </div>
+            <div>
+                <label>HLA-DR</label>
+                <input type="text" name="HLA-DR" class="hla-dr" placeholder="00:00">
+            </div>
+            <div>
+                <label>HLA-DQ</label>
+                <input type="text" name="HLA-DQ" class="hla-dq" placeholder="00:00">
+            </div>
         </div>
         <div>
-            <label>HLA-DR</label>
-            <input type="text" name="HLA-DR" class="hla-dr" placeholder="00:00">
+            <lable>size</lable>
+            <input type="text" name="size" class="size" placeholder="L cm: W cm:T cm">
         </div>
-        <div>
-            <label>HLA-DQ</label>
-            <input type="text" name="HLA-DQ" class="hla-dq" placeholder="00:00">
-        </div>
-    </div>
-<div>
-    <lable>size</lable>
-    <input type="text" name="size" class="size" placeholder="L cm: W cm:T cm">
-</div>
         <div>
             <label>date</label>
-            <input type="date" name="date" id="date" class="date" >
+            <input type="date" name="date" id="date" class="date">
         </div>
         <button class="btn-upload">upload</button>
     </form>
 
-        <script src="patient.js"></script>
+    <script src="patient.js"></script>
 </body>
+
 </html>

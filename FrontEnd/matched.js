@@ -49,9 +49,10 @@ fetch('http://localhost:5000/users/matched', {
 
             let id1 = matchedData[i+i].id;
             let id2 = matchedData[(i+i) + 1].id;
-
-            fetch(`http://localhost:5000/users/nonMatchableId/?idOne=${id1}&idTwo=${id2}`)
-            .then(response => response.text())                                                                                                                  
+            fetch(`/nonMatchableId/:idOne=${id1}&idTwo=${id2}`,
+            {method : 'POST'}
+            )
+            .then(response => response.json())                                                                                                                  
             .then(data => console.log(data));
 
             
