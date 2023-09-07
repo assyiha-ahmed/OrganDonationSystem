@@ -1,17 +1,17 @@
     let Address = document.querySelector('.address').value
     let Age = document.querySelector('.age').value
-    let Country = document.querySelector(".country").value
+    // let Country = document.querySelector(".country").value
     let FullName =document.querySelector(".fname").value
     let ContactNumber = document.querySelector(".contactNumber").value
-    let donatingTime = document.querySelector(".when").value
+    // let donatingTime = document.querySelector(".when").value
 
 const donorsData={
     name:FullName,
     age:Age,
-    country : Country,
+    // country : Country,
     address : Address,
     contactNumber : ContactNumber,
-    when : donatingTime
+    // when : donatingTime
 }
 
 

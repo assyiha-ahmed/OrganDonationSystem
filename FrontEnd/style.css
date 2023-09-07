@@ -1,4 +1,7 @@
-
+div{
+  border-radius: 10%;
+  border-top: rgb(0, 81, 255);
+}
 
 .pages{
     background-color: rgb(0, 0, 8);
@@ -62,7 +65,8 @@
       float: left;
       flex-direction: column;
       text-align: center;
-      border-left: solid 5px rgb(19, 17, 17);
+      border-top: rgb(0, 102, 255);
+      /* border-left: solid 5px rgb(19, 17, 17); */
       margin: 50px;
 
     }
@@ -77,6 +81,18 @@
       margin: 50px;
 
     }
+
+.disApprovedMatches{
+  color: rgb(12, 3, 3);
+  font-size: 20px;
+  display: flex;
+  float: left;
+  flex-direction: column;
+  text-align: center;
+  /* border-left: solid 5px rgb(19, 17, 17); */
+  margin: 50px;
+  border-top: rgb(0, 102, 255);
+}
     .heading{
       display: flex;
       text-align: center;
@@ -86,6 +102,12 @@
     }
 
 .approvedMatches{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.disApprovedMatches{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;

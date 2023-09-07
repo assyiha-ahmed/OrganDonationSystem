@@ -1,67 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
-    <style>
-        html, body{
-    height: 100%;
-    width: 100%;
-}
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.body{
-    border: 5px, solid, rgb(180, 37, 37);
-    background-color: rgb(235, 114, 114);
-    padding: 20px;
-    border-radius: 30px;
-}
-.myForm{
-    margin-top: 20px;
-}
-h1{
-    display: flex;
-    justify-content: center;
-}
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="preRegistration.css" />
+  <title>Donors registration</title>
 </head>
-<body class="Registration">
-    <div class="body">
-    <h1>Registration</h1>
-    <form class="myForm" action="">
-        <div>
-            <label>FULL NAME</label>
-            <input type="text" name="name" placeholder="FULL NAME" class="fname">
-        </div>
-        <div>
-            <label>AGE</label>
-            <input type="text" name="age" placeholder="AGE" class="age">
-        </div>
-        <div>
-            <label>CONTACT NO_</label>
-            <input type="text" name="contact-number" placeholder="CONTACT NUMBER" class="contactNumber">
-        </div>
-        
-        <!-- <div>
-            <label>when would you willing to consider donating? </label>
-            <select class="when">
-                <option value="Deceased-Donor">Deceased Donor</option>
-                <option value="Living-Donor">Living Donor</option>
-            </select>
-        </div> -->
-        <div>
-            <a href="registered.html" value="registered.html" class="registered">
-            <button class="btn2" type="button">Register</button>
-        </div>
-    </form>
-</div>
-    <div class="send">
 
-    </div>
-    <script src="/preRegistration.js"></script>
+<body>
+  <div class="body">
+    <form class="myForm">
+      <h2>Register here</h2>
+      <div class="form-control">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter username" class="fname">
+        <small>Error message</small>
+      </div>
+      <div class="form-control">
+        <label for="age">age</label>
+        <input type="text" id="age" placeholder="Enter age" class="age">
+        <small>Error message</small>
+      </div>
+      <div class="form-control">
+        <label for="email">Email</label>
+        <input type="text" id="email" placeholder="Enter email" class="email">
+        <small>Error message</small>
+      </div>
+      <div class="form-control">
+        <label for="contact-number">contact-number</label>
+        <input type="text" id="contact-number" placeholder="Enter contact-number" class="contactNumber">
+        <small>Error message</small>
+      </div>
+      <div class="form-control">
+        <label for="address">ADRESS</label>
+        <select name="adress" class="address">
+          <option value="addisAbeba" class="addisAbeba">Addis_Abeba</option>
+          <option value="bishoftu" class="bishoftu">Bishoftu</option>
+          <option value="bahirDar" class="bahirDar">BahirDar</option>
+          <option value="adama" class="adama">Adama</option>
+          <option value="modjo" class="modjo">Modjo</option>
+          <option value="hawasa" class="hawasa">Hawasa</option>
+          <option value="mekele" class="mekele">Mekele</option>
+        </select>
+      </div>
+      <div>
+        
+        <button class="btn2" type="button">Register</button>
+      </div>
+    </form>
+  </div>
+  <div class="send">
+
+  </div>
+  <script src="/preRegistration.js"></script>
 </body>
+
 </html>

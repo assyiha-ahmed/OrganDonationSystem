@@ -33,7 +33,7 @@ header{
   color: #fff;
   text-decoration: none;
   font-weight: 500;
-  margin-left: 815px;
+  margin-left: 700px;
 }
 
 .dR{
@@ -42,10 +42,19 @@ header{
   color: #fff;
   text-decoration: none;
   font-weight: 500;
-  margin-left: 900px;
+  margin-left: 800px;
 }
 
 .hospital{
+  position: inherit;
+  font-size: 1.1em;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 1000px;
+}
+
+.admin{
   position: inherit;
   font-size: 1.1em;
   color: #fff;

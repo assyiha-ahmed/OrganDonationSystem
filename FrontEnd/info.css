@@ -1,5 +1,5 @@
 h1{
-    color: brown;
+    color: #3498db;
 }
 body {
     background-color: rgb(227, 227, 227);
@@ -101,7 +101,7 @@ th{
 
 td{
     font-size: 20px;
-    color: crimson;
+    color: #3498db;
     font-weight: 400;
     font-family: Georgia;
 }

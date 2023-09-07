@@ -10,7 +10,7 @@ btn.addEventListener("click",(e) => {
 
     let Address = document.querySelector('.address').value
     let Age = document.querySelector('.age').value
-    let Country = document.querySelector(".country").value
+    // let Country = document.querySelector(".country").value
     let FullName =document.querySelector(".fname").value
     let ContactNumber = document.querySelector(".contactNumber").value
     // let donatingTime = document.querySelector(".when").value
@@ -18,7 +18,7 @@ btn.addEventListener("click",(e) => {
 const donorsData={
     name:FullName,
     age:Age,
-    country : Country,
+    // country : Country,
     address : Address,
     contactNumber : ContactNumber,
     // when : donatingTime
@@ -26,15 +26,6 @@ const donorsData={
 addData(donorsData);
 hideBody();
 });
-
-
-
-
-
-
-
-
-
 
 // const btn = document.querySelector(".btn2")
  
@@ -101,6 +92,20 @@ function hideBody(){
 }
 
 function  addData(data){
+
+    fetch('http://localhost:5000/users/firstDonor', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => {
+        return res.text();
+    })
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
+
+
 
     fetch('http://localhost:5000/users/preRegistrationOfDonors',{
         method: 'POST',

@@ -1,80 +1,31 @@
-let matchedData = [];
+let disAprovedData = [];
 
 
-fetch('http://localhost:5000/users/matched', {
+fetch('http://localhost:5000/users/disApproved', {
 }).then(res => {
     return res.json();
 })
-    .then(data => {
-       matchedData = JSON.parse(data);
-    //    console.log(matchedData)
-       for (let i = 0; i < matchedData.length - 1; i += 2) {
-        let donorMatched = matchedData[i];
-        let patientMatched = matchedData[i+1];
-        createMatched(donorMatched.name, donorMatched.age, donorMatched.bloodType, patientMatched.name, patientMatched.age, patientMatched.bloodType);
+.then(data => {
+    disapproved = JSON.parse(data)
+
+    console.log(disapproved)
+
+    for (let i = 0; i < disapproved.length - 1; i += 2) {
+        let donordisapproved = disapproved[i];
+        let patientdisapproved = disapproved[i+1];
+
+        // console.log(donorApproved,patientApproved);
+
+        creatDisapproved(donordisapproved.name, donordisapproved.age, donordisapproved.bloodType, patientdisapproved.name, patientdisapproved.age, patientdisapproved.bloodType);
     }
-    let allBtn = document.querySelectorAll(".a-btn");
-    let index = 0;
-    for (let i = 0; i < allBtn.length; i++){
-        let singleBtn = allBtn[i];
-   
+})
 
-        singleBtn.addEventListener("click", ()=>{
-            
-            // console.log(matchedData);
-
-            // console.log(matchedData[i+i], matchedData[(i+i) + 1]);
-
-            let id1 = matchedData[i+i].id;
-            let id2 = matchedData[(i+i) + 1].id;
-
-            fetch(`http://localhost:5000/users/deleteAproved/?idOne=${id1}&idTwo=${id2}`)
-    .then(response => response.text())                                                                                                                  
-    .then(data => console.log(data));
-
-
-            // console.log(matchedData[i], matchedData[i+1])
-        })
-    }
- let dBtn = document.querySelectorAll(".d-btn");
-    for (let i = 0; i < dBtn.length; i++){
-        let singleBtn = dBtn[i];
-   
-
-        singleBtn.addEventListener("click", ()=>{
-            
-            // console.log(matchedData);
-
-            // console.log(matchedData[i+i], matchedData[(i+i) + 1]);
-
-            let id1 = matchedData[i+i].id;
-            let id2 = matchedData[(i+i) + 1].id;
-
-            // fetch(`http://localhost:5000/users/nonMatchableId/?idOne=${id1}&idTwo=${id2}`)
-            // .then(response => response.text())                                                                                                                  
-            // .then(data => console.log(data));
-
-            
-            fetch(`http://localhost:5000/users/deleteDisAproved/?idOne=${id1}&idTwo=${id2}`)
-    .then(response => response.text())                                                                                                                  
-    .then(data => console.log(data));
-
-
-            // console.log(matchedData[i], matchedData[i+1])
-        
-        })
-    }
-
-    })
-    .catch(error => console.log(error))
+.catch(error => console.log(error))
 
 
 
-
-    
-
-function createMatched(donor_name, donor_age,donor_bt,patient_name, patient_age,patient_bt, ) {
-    // Create a new single match div
+function creatDisapproved(donor_name, donor_age,donor_bt,patient_name, patient_age,patient_bt){
+     // Create a new single match div
 const singleMatchDiv = document.createElement("div");
 singleMatchDiv.classList.add("singl-match");
 
@@ -186,38 +137,32 @@ donorPatientDiv.appendChild(patientInfoDiv);
 // ... (Repeat the same steps for patient-info)
 
 // Create button container div
-const btnContainerDiv = document.createElement("div");
-btnContainerDiv.classList.add("btn-container");
+// const btnContainerDiv = document.createElement("div");
+// btnContainerDiv.classList.add("btn-container");
 
 // Create approve button
-const approveBtn = document.createElement("button");
-approveBtn.classList.add("a-btn");
-approveBtn.textContent = "Approve";
+// const approveBtn = document.createElement("button");
+// approveBtn.classList.add("a-btn");
+// approveBtn.textContent = "Approve";
 
 // Create disapprove button
-const disapproveBtn = document.createElement("button");
-disapproveBtn.classList.add("d-btn");
-disapproveBtn.textContent = "Disapprove";
+// const disapproveBtn = document.createElement("button");
+// disapproveBtn.classList.add("d-btn");
+// disapproveBtn.textContent = "Disapprove";
 
 // Append buttons to button container div
-btnContainerDiv.appendChild(approveBtn);
-btnContainerDiv.appendChild(disapproveBtn);
+// btnContainerDiv.appendChild(approveBtn);
+// btnContainerDiv.appendChild(disapproveBtn);
 
 
 
 // Append patient-info here
-donorPatientDiv.appendChild(btnContainerDiv);
+// donorPatientDiv.appendChild(btnContainerDiv);
 
 // Append donor-patient div to single match div
 singleMatchDiv.appendChild(donorPatientDiv);
 
 // Append single match div to matched container
-const matchedContainer = document.querySelector(".matched-container");
-matchedContainer.appendChild(singleMatchDiv);
-
+const disApprovedContainer = document.querySelector(".disApprovedMatches");
+disApprovedContainer.appendChild(singleMatchDiv);
 }
-
-
-
-
-

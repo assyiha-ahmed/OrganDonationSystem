@@ -1,26 +1,15 @@
 // import { Console } from "console";
 import fs from "fs";
-import router from "./routes/users.js";
-import express from 'express';
-const app = express();
-app.post('http://localhost:5000/users/deleteAproved/:id1',(req,res) => {
-    const id=req.params.id1;
-    console.log(id);
-})
-let donorId;
-let patientId;
-
-// router('/nonMatchableId', (req,res) =>{
-//     const {query} = req;
-//     donorId = query.idOne;
-//     patientId = query.idTwo;
-// });
-
- console.log(donorId,patientId);
+// import router from "./routes/users.js";
+// import express from 'express';
 
 let matchedusers = [];
 
 function filterData() {
+
+    var nonMatchableDonor = fs.readFileSync('nonMatchableDonor.txt','utf8');
+    var nonMatchablepatient = fs.readFileSync('nonMatchablepatient.txt','utf8');
+
 
     var donor = fs.readFileSync('donor.txt','utf8');
     donor = JSON.parse(donor);
@@ -30,8 +19,10 @@ function filterData() {
 
     for (let i = 0; i < donor.length; i++) {
         for (let x = patient.length - 1; x >= 0; x--) {
+
+            var nonMacthable = donor[i].id == nonMatchableDonor[i].id && patient[x].id == nonMatchablepatient[i].id;
     
-            if (donor[i] && patient[i] && donor[i].id != donorId && patient[i].id != patientId) {
+            if (donor[i] && patient[i] && nonMacthable == false) {
                 let donorBloodType = donor[i].bloodType;
                 let patientBloodType = patient[x].bloodType;
                 // console.log(donorBloodType, patientBloodType, "<--------------");
