@@ -69,7 +69,7 @@ header{
   user-select: none;
 }
 
-body{
+.part{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -177,3 +177,16 @@ ul {
 } */ 
 
 
+.adminForm{
+  color: rgb(8, 8, 8);
+}
+
+.add{
+  background-color: #9daebe;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 20vh;
+  margin: 0;
+}

@@ -93,6 +93,7 @@ router.post("/firstDonor", (req,res) => {
         console.log("Saved")
     });
 
+
     filterData();
     res.send(`Donor with the name ${donor.name} added to the data base!`);
     console.log(donor.name);
@@ -166,6 +167,7 @@ router.post('/preRegistrationOfDonors', (req, res) => {
 
     let address = registeredDonor.address;
     console.log(address);
+    // console.log(donor.date);
     // res.send("Hello World")
     for (let i = 0; i < registered.length; i++) {
         if (address == registered[i].address) {

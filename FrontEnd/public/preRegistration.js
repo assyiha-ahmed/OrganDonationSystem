@@ -1,27 +1,30 @@
 // const btn = document.querySelector(".registered");
 const btn = document.querySelector(".btn2")
 
-
-
 btn.addEventListener("click",(e) => {
     
     e.preventDefault();
-
 
     let Address = document.querySelector('.address').value
     let Age = document.querySelector('.age').value
     // let Country = document.querySelector(".country").value
     let FullName =document.querySelector(".fname").value
     let ContactNumber = document.querySelector(".contactNumber").value
+    let Datee = new Date();
     // let donatingTime = document.querySelector(".when").value
+    // let Month =  date.getMonth() + 1;
+    // let Day = date.getDate();
+    // let Year = date.getFullYear();
 
 const donorsData={
     name:FullName,
     age:Age,
-    // country : Country,
     address : Address,
     contactNumber : ContactNumber,
-    // when : donatingTime
+    date : Datee
+    // month : Month,
+    // day : Day,
+    // year : Year
 }
 addData(donorsData);
 hideBody();
