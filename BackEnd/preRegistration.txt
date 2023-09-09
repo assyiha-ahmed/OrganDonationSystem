@@ -1,1 +1,1 @@
-[{"name":"","age":"","address":"addisAbeba","contactNumber":"","date":"2023-09-09T08:36:50.778Z","id":"893d52af-e55a-47a3-9779-a3bae3233d42"}]
+[{"name":"","age":"","address":"addisAbeba","contactNumber":"","date":"2023-09-09T08:36:50.778Z","id":"893d52af-e55a-47a3-9779-a3bae3233d42"},{"name":"alan","age":"23","address":"addisAbeba","contactNumber":"+251912345678","date":"2023-09-09T11:42:04.921Z","id":"55498d27-f837-45f3-985e-43ea054812e7"}]
