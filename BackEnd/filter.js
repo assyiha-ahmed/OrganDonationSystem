@@ -20,9 +20,10 @@ function filterData() {
     for (let i = 0; i < donor.length; i++) {
         for (let x = patient.length - 1; x >= 0; x--) {
 
-            var nonMacthable = donor[i].id == nonMatchableDonor[i].id && patient[x].id == nonMatchablepatient[i].id;
-    
-            if (donor[i] && patient[i] && nonMacthable == false) {
+            // var nonMacthable = donor[i].id == nonMatchableDonor[i].id && patient[x].id == nonMatchablepatient[i].id;
+            //     console.log(nonMacthable);
+                // && nonMacthable == false
+            if (donor[i] && patient[i] ) {
                 let donorBloodType = donor[i].bloodType;
                 let patientBloodType = patient[x].bloodType;
                 // console.log(donorBloodType, patientBloodType, "<--------------");
