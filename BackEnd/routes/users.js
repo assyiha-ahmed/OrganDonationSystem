@@ -40,6 +40,29 @@ let disapproved = [];
 let nonMatchableDonor = [];
 let nonMatchablepatient = [];
 let preRegistrationOfDonor = [];
+let reqHospitals = [];
+
+router.post('/reqAdmin', (req, res) => {
+    let reqData =  req.body;
+
+    reqHospitals.push({ ...reqData });
+
+    const jsonData = JSON.stringify(reqHospitals);
+
+    fs.writeFileSync('requestedHospitals.txt', jsonData, (err) => {
+        console.log("Saved");
+    });
+
+
+});
+
+router.get('/getRequest', (req, res) => {
+
+    let readHospitalRequest =fs.readFileSync("requestedHospitals.txt", "utf8");
+    const hospitalRequest = JSON.stringify(readHospitalRequest);
+    res.send(hospitalRequest);
+
+});
 
 router.get('/donorsHistory', (req, res) => {
     var donors = fs.readFileSync('./donor.txt', 'utf-8');

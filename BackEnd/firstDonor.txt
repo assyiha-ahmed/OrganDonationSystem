@@ -1,1 +1,18 @@
-[{"name":"","age":"","address":"addisAbeba","contactNumber":"","date":"2023-09-09T08:36:50.778Z","id":"238dc9e2-2076-4a9f-b444-fa6244fa4c0b"},{"name":"alan","age":"23","address":"addisAbeba","contactNumber":"+251912345678","date":"2023-09-09T11:42:04.921Z","id":"43697ced-b527-4c96-963a-df387a841163"}]
+[
+    {
+        "name": "fenet",
+        "age": "17",
+        "address": "addisAbeba",
+        "contactNumber": "+251965182741",
+        "date": "2023-03-09T08:36:50.778Z",
+        "id": "238dc9e2-2076-4a9f-b444-fa6244fa4c0b"
+    },
+    {
+        "name": "asiya",
+        "age": "23",
+        "address": "addisAbeba",
+        "contactNumber": "+251977709491",
+        "date": "2023-03-09T11:42:04.921Z",
+        "id": "43697ced-b527-4c96-963a-df387a841163"
+    }
+]
