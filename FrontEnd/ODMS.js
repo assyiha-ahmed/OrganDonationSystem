@@ -2,7 +2,7 @@ class MyHeader extends HTMLElement{
     connectedCallback() {
         this.innerHTML = `
         <header>
-            <h2 class="OD">ORGAN DONATION</h2>
+        <img class="logo" style="size : 1px;" src="image/logo.png" alt="BE A HERO" >
             <nav class="pages">
                 <a class="home" href="ODMS.html">Home</a>
                 <a class="dR" href="http://localhost:8000/">Donors Registration</a>

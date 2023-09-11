@@ -4,12 +4,16 @@ header{
   left: 0;
   width: 100%;
   padding: 20px 100px;
-  background: #3498db;
+  background: brown;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 99;
 }
+
+/* image{
+  margin: left;
+} */
 
 *{
   margin: 0;
@@ -21,7 +25,7 @@ header{
 .pages {
   position: inherit;
   font-size: 1.1em;
-  color: #fff;
+  color: #490b0b;
   text-decoration: none;
   font-weight: 500;
   margin-left: 40px;
@@ -30,7 +34,7 @@ header{
 .home{
   position: inherit;
   font-size: 1.1em;
-  color: #fff;
+  color: rgb(58, 9, 9);
   text-decoration: none;
   font-weight: 500;
   margin-left: 700px;
@@ -39,7 +43,7 @@ header{
 .dR{
   position: inherit;
   font-size: 1.1em;
-  color: #fff;
+  color: rgb(44, 5, 5);
   text-decoration: none;
   font-weight: 500;
   margin-left: 800px;
@@ -48,7 +52,7 @@ header{
 .hospital{
   position: inherit;
   font-size: 1.1em;
-  color: #fff;
+  color: rgb(59, 6, 6);
   text-decoration: none;
   font-weight: 500;
   margin-left: 1000px;
@@ -57,16 +61,21 @@ header{
 .admin{
   position: inherit;
   font-size: 1.1em;
-  color: #fff;
+  color: rgb(66, 6, 6);
   text-decoration: none;
   font-weight: 500;
   margin-left: 1100px;
+ text-decoration: solid;
 }
 
 .OD{
   font-size: 2em;
-  color: #fff;
+  color: #460909;
   user-select: none;
+}
+
+.logo{
+width: 6%;
 }
 
 .part{
@@ -74,7 +83,7 @@ header{
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  /* background: url('images.jpg') no-repeat; */
+  /* background-image: url("images/image.jpg"); */
   background-size: cover;
   background-position: center;
 }

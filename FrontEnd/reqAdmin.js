@@ -17,7 +17,7 @@ fetch("http://localhost:5000/users/getRequest", {
 
         console.log(name,address,email);
         createRequest(name,address,email);     
-      
+    
       });
    
 })
@@ -30,7 +30,7 @@ const reqDiv = document.createElement("div");
 reqDiv.classList.add("req-div");
 
 
-// Create donor-info div
+// /Create donor-info div
 const hospitalInfoDiv = document.createElement("div");
 hospitalInfoDiv.classList.add("hospital-info");
 
@@ -69,12 +69,30 @@ const email = document.createTextNode(hospital_email);
 emailDiv.appendChild(emailSpan);
 emailDiv.appendChild(email);
 
+// Create approve button
+const allowBtn = document.createElement("button");
+allowBtn.classList.add("a-btn");
+allowBtn.textContent = "Allow";
+
+// Create disapprove button
+const denyBtn = document.createElement("button");
+denyBtn.classList.add("d-btn");
+denyBtn.textContent = "Deny";
+
+
 // Append donor-title, donor-name, donor-age, and donor-bt to donor-info
 hospitalInfoDiv.appendChild(reqTitle);
 hospitalInfoDiv.appendChild(document.createElement("hr"));
 hospitalInfoDiv.appendChild(hospitalNameDiv);
 hospitalInfoDiv.appendChild(addressDiv);
 hospitalInfoDiv.appendChild(emailDiv);
+hospitalInfoDiv.appendChild(allowBtn);
+hospitalInfoDiv.appendChild(denyBtn);
+
+
+// Create button container div
+const btnContainerDiv = document.createElement("div");
+btnContainerDiv.classList.add("btn-container");
 
 reqDiv.appendChild(hospitalInfoDiv);
 
