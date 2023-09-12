@@ -41,6 +41,8 @@ let nonMatchableDonor = [];
 let nonMatchablepatient = [];
 let preRegistrationOfDonor = [];
 let reqHospitals = [];
+let allowedHospitals =[];
+let deniedHospitals =[];
 
 router.post('/reqAdmin', (req, res) => {
     let reqData =  req.body;
@@ -56,9 +58,35 @@ router.post('/reqAdmin', (req, res) => {
 
 });
 
+router.post('/allowed', (req, res) => {
+    const hospital = req.body;
+
+
+
+    allowedHospitals.push({ ...hospital });
+
+    const jsonData = JSON.stringify(allowedHospitals);
+
+    fs.writeFileSync('allowed.txt', jsonData, (err) => {
+        console.log("Saved")
+    });
+});
+
+router.post('/denied', (req, res) => {
+    const hospital = req.body;
+
+    deniedHospitals.push({ ...hospital });
+
+    const jsonData = JSON.stringify(deniedHospitals);
+
+    fs.writeFileSync('denied.txt', jsonData, (err) => {
+        console.log("Saved")
+    });
+});
+
 router.get('/getRequest', (req, res) => {
 
-    let readHospitalRequest =fs.readFileSync("requestedHospitals.txt", "utf8");
+    var readHospitalRequest =fs.readFileSync('./requestedHospitals.txt', 'utf8');
     const hospitalRequest = JSON.stringify(readHospitalRequest);
     res.send(hospitalRequest);
 

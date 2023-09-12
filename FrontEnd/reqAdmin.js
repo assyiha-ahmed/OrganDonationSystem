@@ -19,9 +19,67 @@ fetch("http://localhost:5000/users/getRequest", {
         createRequest(name,address,email);     
     
       });
+
+      let allBtn = document.querySelectorAll(".a-btn");
+    for (let x = 0; x < allBtn.length; x++){
+        let singleBtn = allBtn[x];
+   
+
+        singleBtn.addEventListener("click", ()=>{
+            
+             let allowed = requestedHospitals[x];
+
+ allowedData(allowed);
+
+        })
+    }
+
+    
+ let dBtn = document.querySelectorAll(".d-btn");
+ for (let y = 0; y < dBtn.length; y++){
+     let singleBtn = dBtn[y];
+
+
+     singleBtn.addEventListener("click", ()=>{
+         
+        let denied = requestedHospitals[y];
+        deniedData(denied);
+
+     
+     })
+ }
+
    
 })
 .catch(error => console.log(error))
+
+function deniedData(data){
+    fetch('http://localhost:5000/users/denied', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => {
+        return res.text();
+    })
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
+}
+
+function allowedData(data){
+    fetch('http://localhost:5000/users/allowed', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => {
+        return res.text();
+    })
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
+}
 
 function createRequest(hospital_name,hospital_address,hospital_email){
 
