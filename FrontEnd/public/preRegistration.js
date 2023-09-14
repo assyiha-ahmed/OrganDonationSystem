@@ -185,6 +185,12 @@ let place;
         BackBtn.classList.add("back");
        BackBtn.textContent = "Back to form";
 
+       let map = document.createElement("a");
+       
+       let link = document.createTextNode("use google map");
+        map.appendChild(link);
+        map.title = "this is a link"
+        map.href = "http://localhost:5500/FrontEnd/map.html";
       
         
         
@@ -193,7 +199,9 @@ let place;
         div.appendChild(p1);
         div.appendChild(p2);
         div.appendChild(p3);
+        div.appendChild(map);
         div.appendChild(BackBtn);
+
 
 
         BackBtn.addEventListener("click", () =>{
