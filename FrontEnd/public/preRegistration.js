@@ -5,6 +5,23 @@ btn.addEventListener("click",(e) => {
     
     e.preventDefault();
 
+    const success = (position) => {
+
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        fetch(`http://localhost:5000/users/donorLocation/?latitude=${latitude}&longitude=${longitude}`)
+        .then(response => response.text())                                                                                                                  
+        .then(data => console.log(data));
+    }
+   
+
+
+    const error =() =>{
+        console.log("error")
+    }
+    navigator.geolocation.getCurrentPosition(success, error);
+
     let Address = document.querySelector('.address').value
     let Age = document.querySelector('.age').value
     // let Country = document.querySelector(".country").value
@@ -26,8 +43,8 @@ const donorsData={
     // day : Day,
     // year : Year
 }
-addData(donorsData);
-hideBody();
+// addData(donorsData);
+// hideBody();
 });
 
 // const btn = document.querySelector(".btn2")
@@ -190,7 +207,7 @@ let place;
        let link = document.createTextNode("use google map");
         map.appendChild(link);
         map.title = "this is a link"
-        map.href = "http://localhost:5500/FrontEnd/map.html";
+        map.href = "http://localhost:5500/FrontEnd/maps.html";
       
         
         

@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { json } from 'express';
 import cors from "cors"
 import { v4 as uuidv4 } from 'uuid';
 import fs, { copyFileSync } from "fs"
@@ -43,6 +43,7 @@ let preRegistrationOfDonor = [];
 let reqHospitals = [];
 let allowedHospitals =[];
 let deniedHospitals =[];
+
 
 router.post('/reqAdmin', (req, res) => {
     let reqData =  req.body;
@@ -238,6 +239,34 @@ router.get('/deleteUser', (req, res) => {
     res.send(idOne);
 
 
+});
+
+router.get('/donorLocation', (req, res) => {
+
+    let latitude = req.query.latitude;
+    let longitude = req.query.longitude;
+
+    let donorsLocation=[];
+
+    let donorLocation = {
+        lat: latitude,
+        lng: longitude
+    }
+
+    donorsLocation.push(donorLocation);
+    // console.log(donorsLocation, "<-------")
+
+    fs.writeFileSync('donorLocation.txt', JSON.stringify(donorsLocation));
+   
+    res.send({latitude, longitude});
+
+});
+
+router.get('/getLocation',(req,res) =>{
+    let location = fs.readFileSync('./donorLocation.txt','utf8');
+    const jsonData = JSON.stringify(location);
+    console.log(jsonData);
+    res.send(jsonData);
 });
 
 router.get('/deleteAproved', (req, res) => {

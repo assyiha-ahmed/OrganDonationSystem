@@ -4,19 +4,43 @@ btn.addEventListener("click",(e) =>{
 
     e.preventDefault();
 
-    alert ("Request submited successfully");
+    // alert ("Request submited successfully");
 
     const name = document.querySelector('.name').value;
-    const address = document.querySelector('.address').value;
+    // const address = document.querySelector('.address').value;
     const emailAddress = document.querySelector('.email-address').value;
+
+    const success = (position) =>{
+        console.log(position)
+        const latitude = position.coords.latitude;
+        const longitude  = position.coords.longitude;
+
+        const geoApiurl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
+     
+        fetch(geoApiurl)
+        .then(res => res.json())
+        .then(data =>{
+           const City = data.city;
+        })
+
+    }
+
+    const error = () =>{
+        console.log("error");
+    }
+
+    navigator.geolocation.getCurrentPosition(success,error);
+
+
+ 
 
     let request={
         Name : name, 
-        Address : address,
+        Address : City,
         EmailAddress : emailAddress
     }
 
-        addData(request);
+        // addData(request);
 
     
 });

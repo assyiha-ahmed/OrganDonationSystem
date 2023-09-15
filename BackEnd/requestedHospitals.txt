@@ -1,1 +1,1 @@
-[{"Name":"asfa","Address":"bi","EmailAddress":""},{"Name":"asfa","Address":"bishoftu","EmailAddress":"asfa@gimal.com"},{"Name":"kidus_paulose","Address":"addis abeba","EmailAddress":"kidus_paulose@gmail.com"}]
+[{"Name":"","Address":"","EmailAddress":""},{"Name":"","Address":"","EmailAddress":""},{"Name":"","Address":"","EmailAddress":""},{"Name":"","Address":"","EmailAddress":""},{"Name":"","Address":"","EmailAddress":""},{"Name":"","Address":"","EmailAddress":""},{"Name":"","Address":"","EmailAddress":""},{"Name":"","Address":"","EmailAddress":""}]

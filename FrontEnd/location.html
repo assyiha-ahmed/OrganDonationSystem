@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+<p><button style="font-size:36pt;" onclick="geoFindMe()">Show position</button></p>
+<div style="font-size:36pt;" id="out"></div>
+
+<script>
+function geoFindMe() {
+  var output = document.getElementById("out");
+
+  if (!navigator.geolocation){
+    output.innerHTML = "<p>Geolokation wird von ihrem Browser nicht unterstützt</p>";
+    return;
+  }
+
+  function success(position) {
+    var latitude  = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+	var positionDate = new Date(position.timestamp);
+	var currentDate = new Date();	
+	
+    output.innerHTML = '<p>Die Latitude ist ' + latitude + '° <br>Die Longitude ist ' + longitude + '°</p>' + '<p>' + positionDate.toLocaleString() + ' - ' + currentDate + '</p>' + output.innerHTML;
+
+    //var img = new Image();
+    //img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+
+    //output.appendChild(img);
+  };
+
+  function error() {
+    output.innerHTML = "Es war nicht möglich Sie zu lokalisieren";
+  };
+
+  //output.innerHTML = "<p>Lokalisieren…</p>";
+
+  var geoOptions = {
+		enableHighAccuracy: true,
+        maximumAge: 0,
+        timeout: 27000  
+  }
+  
+  navigator.geolocation.getCurrentPosition(success, error, geoOptions);
+}
+</script>
+</body>
+</html>
