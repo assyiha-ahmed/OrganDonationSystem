@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import fs, { copyFileSync } from "fs"
 import { doesNotReject, match } from 'assert';
 import filterData from "../filter.js"
+import nodemailer from 'nodemailer';
 
 const router = express.Router();
 router.use(cors());
@@ -64,13 +65,83 @@ router.post('/allowed', (req, res) => {
 
 
 
-    allowedHospitals.push({ ...hospital });
+    function fourDigitNumber() {
+
+        let n = Math.random() * 9000 + 1000;
+      
+        let nString = n.toString();
+      
+        while (nString.length < 4) {
+          nString = "0" + nString;
+        }
+    
+        return nString;
+      }
+    
+     let n = fourDigitNumber();
+     n=parseInt(n);
+     console.log(typeof(n));
+    let Password = Math.floor(n) + 1; 
+
+    let Name = "@" + hospital.Name;
+
+    allowedHospitals.push({ ...hospital, userName : Name, password:Password });
 
     const jsonData = JSON.stringify(allowedHospitals);
 
-    fs.writeFileSync('allowed.txt', jsonData, (err) => {
+    fs.writeFileSync('allowedHospitals.txt', jsonData, (err) => {
         console.log("Saved")
     });
+    
+  let  emailAddress = hospital.EmailAddress;
+
+
+  console.log(emailAddress,Password,Name)
+
+const transporter = nodemailer.createTransport({
+    service: "hotmail",
+    auth: {
+        user:"selambelete09123@gmail.com",
+        pass: "selam_belete_09123"
+    }
+});
+
+
+const option = {
+    from: "selambelete09123@gmail.com",
+    to:   "assiyaahmed75@gmail.com",
+    subject: "hi!",
+    text: "helloooo"
+};
+
+transporter.sendMail(option, function(err,info){
+    if(err){
+        console.log(err);
+        return;
+    }
+    console.log("sent :"+info.response);
+})
+
+
+
+
+//     let allowedHospital = fs.readFileSync("allowed.txt","utf8");
+// allowedHospital = JSON.parse(allowedHospital)
+// console.log(typeof(allowedHospital))
+
+// for(let i=0;i<allowedHospital.length;i++){
+//   let  emailAddress = allowedHospital[i].EmailAddress;
+//    let password = allowedHospital[i].password;
+//   let  userName = allowedHospital[i].userName;
+
+//   console.log(emailAddress)
+
+
+
+ 
+
+
+
 });
 
 router.post('/denied', (req, res) => {

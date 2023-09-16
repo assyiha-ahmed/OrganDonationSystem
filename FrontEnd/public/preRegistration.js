@@ -10,6 +10,8 @@ btn.addEventListener("click",(e) => {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
+        console.log(latitude,longitude);
+
         fetch(`http://localhost:5000/users/donorLocation/?latitude=${latitude}&longitude=${longitude}`)
         .then(response => response.text())                                                                                                                  
         .then(data => console.log(data));
@@ -43,8 +45,8 @@ const donorsData={
     // day : Day,
     // year : Year
 }
-// addData(donorsData);
-// hideBody();
+addData(donorsData);
+hideBody();
 });
 
 // const btn = document.querySelector(".btn2")

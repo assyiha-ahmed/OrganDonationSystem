@@ -1,1 +1,1 @@
-[{"Name":"bishoftu","Address":"bishoftu","EmailAddress":"bishoftuHospital@gmail.com"}]
+[{"Name":"","Address":"","EmailAddress":"","lat":9.026,"lng":38.7439},{"Name":"","Address":"","EmailAddress":"","lat":9.026,"lng":38.7439},{"Name":"","Address":"","EmailAddress":"","lat":9.026,"lng":38.7439},{"Name":"","Address":"","EmailAddress":"","lat":9.026,"lng":38.7439}]

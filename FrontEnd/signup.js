@@ -7,7 +7,7 @@ btn.addEventListener("click",(e) =>{
     // alert ("Request submited successfully");
 
     const name = document.querySelector('.name').value;
-    // const address = document.querySelector('.address').value;
+    const address = document.querySelector('.address').value;
     const emailAddress = document.querySelector('.email-address').value;
 
     const success = (position) =>{
@@ -15,13 +15,24 @@ btn.addEventListener("click",(e) =>{
         const latitude = position.coords.latitude;
         const longitude  = position.coords.longitude;
 
+        let request={
+            Name : name, 
+            Address : address,
+            EmailAddress : emailAddress,
+            lat : latitude,
+            lng : longitude
+        }
+    
+            addData(request);
+            
         const geoApiurl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
      
         fetch(geoApiurl)
         .then(res => res.json())
         .then(data =>{
-           const City = data.city;
+           const City = data.locality;
         })
+
 
     }
 
@@ -34,13 +45,7 @@ btn.addEventListener("click",(e) =>{
 
  
 
-    let request={
-        Name : name, 
-        Address : City,
-        EmailAddress : emailAddress
-    }
-
-        // addData(request);
+   
 
     
 });
