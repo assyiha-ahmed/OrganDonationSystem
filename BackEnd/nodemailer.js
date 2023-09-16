@@ -20,6 +20,7 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+
 const option = {
     from: "fenettnugusu@gmail.com",
     to: emailAddress,
