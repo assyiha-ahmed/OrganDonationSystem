@@ -1,0 +1,125 @@
+  import nodemailer from 'nodemailer';
+  import OAuth2Client from 'google-auth-library';
+
+// const { OAuth2Client } = require('google-auth-library');
+// const nodemailer = require('nodemailer');
+
+const CLIENT_ID='518947542757-5scv8sue76anf2hivjavq0q9iplbisll.apps.googleusercontent.com'
+const CLIENT_SECRET='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'
+const REDIRECT_URI='https://developers.google.com/oauthplayground'
+const REFRESH_TOKEN='1//04BG8NOK0DpjgCgYIARAAGAQSNwF-L9IraSSCaTvdQStSy_SK4EyKL4wZqb1Yi-JdswTDcGQJ0RNT2d_mMTmMVK2iMWJjyuOrZx4'
+
+async function sendMail() {
+  const oAuth2Client = new OAuth2Client(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
+  oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+
+  const accessToken = await oAuth2Client.getAccessToken();
+
+  const transport = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      type: 'OAuth2',
+      user: 'fenettnugusu@gmail.com',
+      clientId: CLIENT_ID,
+      clientSecret: CLIENT_SECRET,
+      refreshToken: REFRESH_TOKEN,
+      accessToken: accessToken,
+    },
+  });
+
+  const mailOptions = {
+    from: 'fenettnugusu@gmail.com',
+    to: 'assiyaahmed75@gmail.com',
+    subject: 'hello dear weCAME FIRST',
+    text: 'hi from usa',
+    html: '<h1>hi from usa</h1>',
+  };
+
+  const result = await transport.sendMail(mailOptions);
+  return result;
+}
+
+sendMail()
+  .then((result) => console.log('Email sent...', result))
+  .catch((error) => console.log(error.message));
+
+
+//   const CLIENT_ID='518947542757-5scv8sue76anf2hivjavq0q9iplbisll.apps.googleusercontent.com'
+//   const CLIENT_SECRET='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'
+//   const REDIRECT_URL='https://developers.google.com/oauthplayground'
+//   const REFRESH_TOKEN='1//04BG8NOK0DpjgCgYIARAAGAQSNwF-L9IraSSCaTvdQStSy_SK4EyKL4wZqb1Yi-JdswTDcGQJ0RNT2d_mMTmMVK2iMWJjyuOrZx4'
+
+//   const oAuth2Client = new OAuth2Client(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
+// //   const oAuth2client = new google.auth.OAuth2(CLIENT_ID,CLIENT_SECRET,REDIRECT_URL)
+//   oAuth2client.setCredentials({refresh_token: REFRESH_TOKEN})
+
+//   async function sendMail() {
+// try{
+
+//      const accessToken =await oAuth2client.getAccessToken() 
+
+//     const transport =nodemailer.createTransport({
+//         service:'gmail',
+//         auth:{
+//             type:'OAuth2',
+//             user:'fenettnugusu@gmail.com',
+//             clientId:CLIENT_ID,
+//             clientSecret:CLIENT_SECRET,
+//             refreshToken:REFRESH_TOKEN,
+//             accessToken:accessToken
+//         }
+//     })
+
+// const mailOptions={
+//     from:'fenettnugusu@gmail.com',
+//     to:'assiyaahmed75@gmail.com',
+//     subject:'hello dear weCAME FIRST',
+//     text:'hi from usa',
+//     html:'<h1>hi from usa</h1>',
+// };
+// const result = await transport.sendMail(mailOptions)
+// return result;
+
+     
+// }catch(error){
+//     return error;
+// } 
+
+//   }
+
+
+// sendMail()
+//     .then((result) => console.log('Email sent...',result))
+//     .catch((error) => console.log(error.message));
+
+
+
+
+
+
+
+
+// // const transporter = nodemailer.createTransport({
+// //     service: "gmail",
+// //     auth: {
+// //         user:"fenettnugusu@gmail.com",
+// //         pass: "fenet2127"
+// //     }
+// // });
+
+
+
+// // const options = {
+// //     from: "fenettnugusu@gmail.com",
+// //     to: "assiyaahmed75@gmail.com",
+// //     subject: "you are great!",
+// //     text: "wow!"
+// // };
+
+// // transporter.sendMail(options, function(err,info){
+// //     if(err){
+// //         console.log(err);
+// //         return;
+// //     }
+// //     console.log("sent :"+info.response);
+// // });
