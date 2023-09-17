@@ -1,1 +1,1 @@
-[{"Name":"asu general hospital","Address":"USA","EmailAddress":"assiyaahmed75@gmail.com","lat":9.026,"lng":38.7439}]
+[{"Name":"jj","Address":"USA","EmailAddress":"assiyaahmed75@gmail.com","lat":9.026,"lng":38.7439},{"Name":"","Address":"","EmailAddress":"","lat":9.026,"lng":38.7439},{"Name":"","Address":"","EmailAddress":"","lat":9.026,"lng":38.7439}]

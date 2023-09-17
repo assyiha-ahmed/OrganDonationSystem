@@ -1,0 +1,47 @@
+import nodemailer from 'nodemailer';
+// import fs from 'fs';
+
+const transporter = nodemailer.createTransport({
+    service: "hotmail",
+    auth: {
+        user:"organdonationmanagement12345@gmail.com",
+        pass: "12345organ54321"
+    }
+});
+
+
+
+const options = {
+    from: "organdonationmanagement12345@gmail.com",
+    to: "assiyaahmed75@gmail.com",
+    subject: "you are great!",
+    text: "wow!"
+};
+
+transporter.sendMail(options, function(err,info){
+    if(err){
+        console.log(err);
+        return;
+    }
+    console.log("sent:"+info.response);
+})
+
+
+
+
+// let hospital = fs.readFileSync("allowedHospitals.txt","utf8");
+// hospital = JSON.parse(hospital)
+// console.log(typeof(hospital))
+
+// for(let i=0;i<hospital.length;i++){
+//   let  emailAddress = hospital[i].EmailAddress;
+//    let password = hospital[i].password;
+//   let  userName = hospital[i].userName;
+
+//   console.log(emailAddress)
+
+
+
+// }
+// user:"teshomezetseat1998@gmail.com",
+// pass: "mybirthday106"

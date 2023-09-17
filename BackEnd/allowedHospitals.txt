@@ -1,11 +1,1 @@
-[
-    {
-        "Name": "asu general hospital",
-        "Address": "USA",
-        "EmailAddress": "assiyaahmed75@gmail.com",
-        "lat": 9.026,
-        "lng": 38.7439,
-        "userName": "@asu general hospital",
-        "password": 5416
-    }
-]
+[{"Name":"jj","Address":"USA","EmailAddress":"assiyaahmed75@gmail.com","lat":9.026,"lng":38.7439,"userName":"@jj","password":8717},{"Name":"","Address":"","EmailAddress":"","lat":9.026,"lng":38.7439,"userName":"@","password":3949},{"Name":"","Address":"","EmailAddress":"","lat":9.026,"lng":38.7439,"userName":"@","password":6414}]
