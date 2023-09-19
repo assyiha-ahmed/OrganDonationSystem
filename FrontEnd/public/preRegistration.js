@@ -1,5 +1,5 @@
 // const btn = document.querySelector(".registered");
-const btn = document.querySelector(".btn2")
+const btn = document.querySelector(".btn2");
 
 btn.addEventListener("click",(e) => {
     

@@ -1,13 +1,13 @@
 body{
       background-image: url("image/World-Organ-Donation-Day-Blog-.webp");
 }
+/*
 .text-box{
-    /* width: 50%; */
+
     columns: rgb(58, 35, 35);
     position: absolute;
     top: 60%;
-    /* left: %; */
-    /* transform: translate(-50%,-50%); */
+
     text-align: center;
 }
 
@@ -20,4 +20,4 @@ body{
     margin: 10px 0 40px;
     color: rgb(0, 0, 0);
     font-size: 20px;
-}
+} */

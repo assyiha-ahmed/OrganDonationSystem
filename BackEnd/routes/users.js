@@ -1,16 +1,41 @@
 import express, { json } from 'express';
 import cors from "cors"
 import { v4 as uuidv4 } from 'uuid';
-import fs, { copyFileSync } from "fs"
+import fs, { accessSync, copyFileSync } from "fs"
 import { doesNotReject, match } from 'assert';
 import filterData from "../filter.js"
 import nodemailer from 'nodemailer';
+import bcrypt from 'bcrypt';
+import { parseArgs } from 'util';
+import passport from 'passport';
+import flash from 'express-flash';
+import session from 'express-session';
+import cookieParser from 'cookie-parser';
+import { USER_REFRESH_ACCOUNT_TYPE } from 'google-auth-library/build/src/auth/refreshclient.js';
+
+// import { initializePassport } from '../password-config.js';
+// initializePassport(passport)
 
 const router = express.Router();
 router.use(cors());
+router.use(express.urlencoded({extended: false}))
+router.use(session({
+    secret: "process.env.SESSION_SECRET" ,
+    resave:false,
+    saveUninitialized:false
+}))
+router.use(cookieParser())
+// router.use(flash())
+// router.use(passport.initialize())
+// router.use(passport.session())
+
+
+const USERS = new Map()
+USERS.set("ASIYA", {id:1, userName:"Asiya", role:"Admin"})
+USERS.set("FENET", {id:1, userName:"Fenet", role:"Admin"})
+
 
 let users = [];
-
 let registered = [
 
     {
@@ -32,7 +57,6 @@ let registered = [
     }
 
 ];
-
 let newRegisteredDonors = [];
 let patients = [];
 let newDoners = [];
@@ -44,7 +68,47 @@ let preRegistrationOfDonor = [];
 let reqHospitals = [];
 let allowedHospitals =[];
 let deniedHospitals =[];
+let hospitals=[];
 
+router.get('/set-cookie', (req,res)=>{
+    console.log(req.cookies)
+    res.send("cookies 🍪")
+});
+
+// router.post('/admin',(req,res) => {
+//    let name = req.body.userName;
+//    let password = req.body.password;
+
+//     res.cookie("name",name)
+//     res.cookie("pasword", password)  
+
+// });
+
+router.post('/hospitalLogin', async (req,res)=>{
+
+    const username = req.body.userName;
+    const password = req.body.password;
+
+    let hospitalInfo  = fs.readFileSync("./files/allowed.txt", "utf8");
+    hospitalInfo = JSON.parse(hospitalInfo);
+
+for(let i=0;i<hospitalInfo.length;i++){
+
+    let Password = hospitalInfo[i].password;
+    let UserName = hospitalInfo[i].userName;
+
+    console.log(Password,UserName);
+    console.log(password,username);
+
+    if (username == UserName  && password == Password) {
+        res.redirect('./FrontEnd/hospital.html');
+      } else {
+        res.status(401).send('Invalid username or password');
+      }
+
+}
+
+});
 
 router.post('/reqAdmin', (req, res) => {
     let reqData =  req.body;
@@ -53,95 +117,62 @@ router.post('/reqAdmin', (req, res) => {
 
     const jsonData = JSON.stringify(reqHospitals);
 
-    fs.writeFileSync('requestedHospitals.txt', jsonData, (err) => {
+    fs.writeFileSync('./files/requestedHospitals.txt', jsonData, (err) => {
         console.log("Saved");
     });
 
 
 });
 
-router.post('/allowed', (req, res) => {
+async function  newFunction () {
+    const password = await bcrypt.hash(strPassword,10);
+    return password;
+}
+
+router.post('/allowed', async (req, res) => {
     const hospital = req.body;
 
-
-
-    function fourDigitNumber() {
-
-        let n = Math.random() * 9000 + 1000;
-      
-        let nString = n.toString();
-      
-        while (nString.length < 4) {
-          nString = "0" + nString;
-        }
-    
-        return nString;
-      }
-    
-     let n = fourDigitNumber();
-     n=parseInt(n);
-     console.log(typeof(n));
-    let Password = Math.floor(n) + 1; 
-
     let Name = "@" + hospital.Name;
+       let hashedPassword = await newFunction();
 
-    allowedHospitals.push({ ...hospital, userName : Name, password:Password });
+        let data = {
+            userName: Name,
+            email:req.body.EmailAddress,
+            password: hashedPassword
+        }
+        console.log(data, "<-------");
 
+    allowedHospitals.push({ ...data });
     const jsonData = JSON.stringify(allowedHospitals);
 
-    fs.writeFileSync('allowedHospitals.txt', jsonData, (err) => {
+    fs.writeFileSync('./files/allowedHospitals.txt', jsonData, (err) => {
         console.log("Saved")
     });
     
-  let  emailAddress = hospital.EmailAddress;
+//   let  emailAddress = hospital.EmailAddress;
+//   console.log(emailAddress,Password,Name)
+// const transporter = nodemailer.createTransport({
+//     service: "hotmail",
+//     auth: {
+//         user:"selambelete09123@gmail.com",
+//         pass: "selam_belete_09123"
+//     }
+// });
+// const option = {
+//     from: "selambelete09123@gmail.com",
+//     to:   "assiyaahmed75@gmail.com",
+//     subject: "hi!",
+//     text: "helloooo"
+// };
+// transporter.sendMail(option, function(err,info){
+//     if(err){
+//         console.log(err);
+//         return;
+//     }
+//     console.log("sent :"+info.response);
+// });
 
-
-  console.log(emailAddress,Password,Name)
-
-const transporter = nodemailer.createTransport({
-    service: "hotmail",
-    auth: {
-        user:"selambelete09123@gmail.com",
-        pass: "selam_belete_09123"
-    }
-});
-
-
-const option = {
-    from: "selambelete09123@gmail.com",
-    to:   "assiyaahmed75@gmail.com",
-    subject: "hi!",
-    text: "helloooo"
-};
-
-transporter.sendMail(option, function(err,info){
-    if(err){
-        console.log(err);
-        return;
-    }
-    console.log("sent :"+info.response);
-})
-
-
-
-
-//     let allowedHospital = fs.readFileSync("allowed.txt","utf8");
-// allowedHospital = JSON.parse(allowedHospital)
-// console.log(typeof(allowedHospital))
-
-// for(let i=0;i<allowedHospital.length;i++){
-//   let  emailAddress = allowedHospital[i].EmailAddress;
-//    let password = allowedHospital[i].password;
-//   let  userName = allowedHospital[i].userName;
-
-//   console.log(emailAddress)
-
-
-
- 
-
-
-
+console.log(req.session)
 });
 
 router.post('/denied', (req, res) => {
@@ -151,21 +182,21 @@ router.post('/denied', (req, res) => {
 
     const jsonData = JSON.stringify(deniedHospitals);
 
-    fs.writeFileSync('denied.txt', jsonData, (err) => {
+    fs.writeFileSync('./files/denied.txt', jsonData, (err) => {
         console.log("Saved")
     });
 });
 
 router.get('/getRequest', (req, res) => {
 
-    var readHospitalRequest =fs.readFileSync('./requestedHospitals.txt', 'utf8');
+    var readHospitalRequest =fs.readFileSync('./files/requestedHospitals.txt', 'utf8');
     const hospitalRequest = JSON.stringify(readHospitalRequest);
     res.send(hospitalRequest);
 
 });
 
 router.get('/donorsHistory', (req, res) => {
-    var donors = fs.readFileSync('./donor.txt', 'utf-8');
+    var donors = fs.readFileSync('./files/donor.txt', 'utf-8');
     const donorsData = JSON.stringify(donors);
     res.send(donorsData);
 });
@@ -175,32 +206,36 @@ router.post('/nonMatchableId', (req, res) => {
     let idOne = req.params.idOne;
     let idTwo = req.query.idTwo;
 
-  console.log(idOne,idTwo);
+    console.log(idOne,idTwo);
     res.send(idOne,idTwo);
 });
 
 router.get('/patientsHistory', (req, res) => {
-    var patients = fs.readFileSync('./patient.txt', 'utf-8');
+
+    var patients = fs.readFileSync('./files/patient.txt', 'utf-8');
     const patientsData = JSON.stringify(patients);
+
     res.send(patientsData);
+
 });
 
 router.get('/matched', (req, res) => {
-    var matched = fs.readFileSync('./matched.txt', 'utf8');
+
+    var matched = fs.readFileSync('./files/matched.txt', 'utf8');
     const jsonData = JSON.stringify(matched);
     res.send(jsonData);
 
 });
 
 router.get('/approved', (req, res) => {
-    var approved = fs.readFileSync('./approved.txt', 'utf8');
+    var approved = fs.readFileSync('./files/approved.txt', 'utf8');
     const jsonData = JSON.stringify(approved);
     res.send(jsonData);
 
 });
 
 router.get("/firstDonor", (req,res) => {
-let firstDonor=fs.readFileSync('firstDonor.txt','utf8');
+let firstDonor=fs.readFileSync('./files/firstDonor.txt','utf8');
 const jsonData = JSON.stringify(firstDonor);
 res.send(jsonData);
 });
@@ -212,7 +247,7 @@ router.post("/firstDonor", (req,res) => {
 
     const jsonData = JSON.stringify(preRegistrationOfDonor);
 
-    fs.writeFileSync('firstDonor.txt', jsonData, (err) => {
+    fs.writeFileSync('./files/firstDonor.txt', jsonData, (err) => {
         console.log("Saved")
     });
 
@@ -223,7 +258,7 @@ router.post("/firstDonor", (req,res) => {
 });
 
 router.get('/disApproved', (req, res) => {
-    var disapproved = fs.readFileSync('./disapproved.txt', 'utf8');
+    var disapproved = fs.readFileSync('./files/disapproved.txt', 'utf8');
     const jsonData = JSON.stringify(disapproved);
     res.send(jsonData);
 
@@ -232,7 +267,6 @@ router.get('/disApproved', (req, res) => {
 router.get('/abcd', (req, res) => {
     let loc = req.query.loc;
 
-
     res.send(loc);
 
 });
@@ -240,16 +274,15 @@ router.get('/abcd', (req, res) => {
 router.post('/donor', (req, res) => {
     const donor = req.body;
 
-    let donors = fs.readFileSync('donor.txt', 'utf8');
+    let donors = fs.readFileSync('./files/donor.txt', 'utf8');
     console.log(donors);
     donors = JSON.parse(donors);
-    // console.log(donors);
 
     newDoners.push({ ...donor, id: uuidv4() });
 
     let newDonorsJson = JSON.stringify(newDoners);
 
-    fs.writeFileSync('donor.txt', newDonorsJson, (err) => {
+    fs.writeFileSync('./files/donor.txt', newDonorsJson, (err) => {
         console.log("Saved");
     });
 
@@ -257,17 +290,14 @@ router.post('/donor', (req, res) => {
     res.send(`donor with the name ${donor.name} added to the data base!`);
 });
 
-
 router.post('/patient', (req, res) => {
     const patient = req.body;
-
-
 
     patients.push({ ...patient, id: uuidv4() });
 
     const jsonData = JSON.stringify(patients);
 
-    fs.writeFileSync('patient.txt', jsonData, (err) => {
+    fs.writeFileSync('./files/patient.txt', jsonData, (err) => {
         console.log("Saved")
     });
 
@@ -279,38 +309,28 @@ router.post('/patient', (req, res) => {
 router.post('/preRegistrationOfDonors', (req, res) => {
     const registeredDonor = req.body;
 
-
     newRegisteredDonors.push({ ...registeredDonor, id: uuidv4() });
 
     const jsonData = JSON.stringify(newRegisteredDonors);
 
-    fs.writeFileSync('preRegistration.txt', jsonData, (err) => {
+    fs.writeFileSync('./files/preRegistration.txt', jsonData, (err) => {
         console.log("Saved");
     });
 
     let address = registeredDonor.address;
     console.log(address);
-    // console.log(donor.date);
-    // res.send("Hello World")
+
     for (let i = 0; i < registered.length; i++) {
         if (address == registered[i].address) {
             res.send(registered[i].Name);
         }
 
     }
-    //  res.send(`donor with the name ${address} added to the data base!`);
 });
 
-
-router.get('/deleteUser', (req, res) => {
-
-
-
-
-    res.send(idOne);
-
-
-});
+// router.get('/deleteUser', (req, res) => {
+//     res.send(idOne);
+// });
 
 router.get('/donorLocation', (req, res) => {
 
@@ -325,16 +345,15 @@ router.get('/donorLocation', (req, res) => {
     }
 
     donorsLocation.push(donorLocation);
-    // console.log(donorsLocation, "<-------")
 
-    fs.writeFileSync('donorLocation.txt', JSON.stringify(donorsLocation));
+    fs.writeFileSync('./files/donorLocation.txt', JSON.stringify(donorsLocation));
    
     res.send({latitude, longitude});
 
 });
 
 router.get('/getLocation',(req,res) =>{
-    let location = fs.readFileSync('./donorLocation.txt','utf8');
+    let location = fs.readFileSync('./files/donorLocation.txt','utf8');
     const jsonData = JSON.stringify(location);
     console.log(jsonData);
     res.send(jsonData);
@@ -345,31 +364,24 @@ router.get('/deleteAproved', (req, res) => {
     let idOne = req.query.idOne;
     let idTwo = req.query.idTwo;
 
-    let matched = fs.readFileSync('./matched.txt', 'utf8');
+    let matched = fs.readFileSync('./files/matched.txt', 'utf8');
     let matchedJsonData = JSON.parse(matched);
 
     approved.push(matchedJsonData.find((user) => user.id == idOne));
     approved.push(matchedJsonData.find((user) => user.id == idTwo));
 
-
-    // console.log(approved);
-
-    fs.writeFileSync("approved.txt", JSON.stringify(approved), (err) => {
+    fs.writeFileSync("./files/approved.txt", JSON.stringify(approved), (err) => {
         console.log("Saved");
     });
-
 
     matchedJsonData = matchedJsonData.filter((user) => user.id != idOne);
     matchedJsonData = matchedJsonData.filter((user) => user.id != idTwo);
 
 
 
-    fs.writeFileSync("matched.txt", JSON.stringify(matchedJsonData), (err) => {
+    fs.writeFileSync("./files/matched.txt", JSON.stringify(matchedJsonData), (err) => {
         console.log("Saved");
     });
-    
-    // console.log(approved);
-    // res.send(approved);
 
 });
 
@@ -378,24 +390,24 @@ router.get('/deleteDisAproved', (req, res) => {
     let idOne = req.query.idOne;
     let idTwo = req.query.idTwo;
 
-    let matched = fs.readFileSync('./matched.txt', 'utf8');
+    let matched = fs.readFileSync('./files/matched.txt', 'utf8');
     let matchedJsonData = JSON.parse(matched);
 
     disapproved.push(matchedJsonData.find((user) => user.id == idOne));
     disapproved.push(matchedJsonData.find((user) => user.id == idTwo));
 
-    fs.writeFileSync("disapproved.txt", JSON.stringify(disapproved), (err) => {
+    fs.writeFileSync("./files/disapproved.txt", JSON.stringify(disapproved), (err) => {
         console.log("Saved");
     });
     
     nonMatchableDonor.push(matchedJsonData.find((user) => user.id == idOne));
     nonMatchablepatient.push(matchedJsonData.find((user) => user.id == idTwo));
 
-    fs.writeFileSync("nonMatchableDonor.txt", JSON.stringify(nonMatchableDonor), (err) => {
+    fs.writeFileSync("./files/nonMatchableDonor.txt", JSON.stringify(nonMatchableDonor), (err) => {
         console.log("Saved");
     });
 
-    fs.writeFileSync("nonMatchablepatient.txt", JSON.stringify(nonMatchablepatient), (err) => {
+    fs.writeFileSync("./files/nonMatchablepatient.txt", JSON.stringify(nonMatchablepatient), (err) => {
         console.log("Saved");
     });
 
@@ -405,15 +417,15 @@ router.get('/deleteDisAproved', (req, res) => {
     matchedJsonData = matchedJsonData.filter((user) => user.id != idOne);
     matchedJsonData = matchedJsonData.filter((user) => user.id != idTwo);
 
-    fs.writeFileSync("matched.txt", JSON.stringify(matchedJsonData), (err) => {
+    fs.writeFileSync("./files/matched.txt", JSON.stringify(matchedJsonData), (err) => {
         console.log("Saved");
     });
 
-    fs.writeFileSync("donor.txt", JSON.stringify(newDoners), (err) => {
+    fs.writeFileSync("./files/donor.txt", JSON.stringify(newDoners), (err) => {
         console.log("Saved");
     });
 
-    fs.writeFileSync("patient.txt", JSON.stringify(patients), (err) => {
+    fs.writeFileSync("./files/patient.txt", JSON.stringify(patients), (err) => {
         console.log("Saved");
     });
 
@@ -423,10 +435,7 @@ router.get('/deleteDisAproved', (req, res) => {
     // fs.writeFileSync("nonMacthable.txt", JSON.stringify(nonMatchableId), (err) => {
     //     console.log("Saved");
     // });
-
     // console.log("hello");
-
-    
 
 });
     
@@ -443,7 +452,7 @@ router.delete('/:id', (req, res) => {
     users = users.filter((user) => user.id != id);
 
     res.send(`User with id ${id} deleted from the database.`)
-})
+});
 
 router.patch('/:id', (req, res) => {
     const { id } = req.params;
@@ -459,6 +468,28 @@ router.patch('/:id', (req, res) => {
     res.send(`added`)
 
 
-})
+});
+
+
+
+function fourDigitNumber() {
+
+    let n = Math.random() * 9000 + 1000;
+  
+    let nString = n.toString();
+  
+    while (nString.length < 4) {
+      nString = "0" + nString;
+    }
+
+    return nString;
+  }
+  let n = fourDigitNumber();
+  n = parseInt(n);
+ let Password = Math.floor(n) + 1;
+ const strPassword = Password.toString(); 
+
+
+
 
 export default router;

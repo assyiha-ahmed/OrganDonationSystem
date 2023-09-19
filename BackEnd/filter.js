@@ -7,14 +7,13 @@ let matchedusers = [];
 
 function filterData() {
 
-    var nonMatchableDonor = fs.readFileSync('nonMatchableDonor.txt','utf8');
-    var nonMatchablepatient = fs.readFileSync('nonMatchablepatient.txt','utf8');
+    var nonMatchableDonor = fs.readFileSync('./files/nonMatchableDonor.txt','utf8');
+    var nonMatchablepatient = fs.readFileSync('./files/nonMatchablepatient.txt','utf8');
 
-
-    var donor = fs.readFileSync('donor.txt','utf8');
+    var donor = fs.readFileSync('./files/donor.txt','utf8');
     donor = JSON.parse(donor);
 
-    var patient = fs.readFileSync('patient.txt', 'utf8');
+    var patient = fs.readFileSync('./files/patient.txt', 'utf8');
     patient = JSON.parse(patient);
 
     for (let i = 0; i < donor.length; i++) {
@@ -70,7 +69,6 @@ function filterData() {
                     counter++;
                 }
               
-
                 // If the difference for each dimension is less than or equal to 20%, then the donor kidney is a match for the recipient kidney.
                 if (lengthDifference <= 0.2 * patientKidneyLength &&
                     widthDifference <= 0.2 * patientKidneyWidth &&
@@ -85,17 +83,17 @@ function filterData() {
                     deletePatient(patient[x].id);
 
                     const getMatch = JSON.stringify(matchedusers);
-                    fs.writeFileSync('matched.txt', getMatch, (err) => {
+                    fs.writeFileSync('./files/matched.txt', getMatch, (err) => {
                         console.log("Saved");
                     });
 
                     const donors = JSON.stringify(donor);
-                    fs.writeFileSync('donor.txt', donors, (err) => {
+                    fs.writeFileSync('./files/donor.txt', donors, (err) => {
                         console.log("saved");
                     });
 
                     const patients = JSON.stringify(patient);
-                    fs.writeFileSync('patient.txt', patients, (err) => {
+                    fs.writeFileSync('./files/patient.txt', patients, (err) => {
                         console.log("saved");
                     });
                 }
@@ -120,10 +118,6 @@ function filterData() {
         patient = patient.filter((user) => user.id != id);
     }
 
-
 }
-
-
-
 
 export default filterData;

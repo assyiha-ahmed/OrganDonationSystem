@@ -3,8 +3,8 @@ import nodemailer from 'nodemailer';
 const transporter = nodemailer.createTransport({
     service: "hotmail",
     auth: {
-        user:"fenettnugusu@gmail.com",
-        pass: "12345organ54321"
+        user:"donationorgan738@gmail.com",
+        pass: "12345organ12345"
     }
 });
 
