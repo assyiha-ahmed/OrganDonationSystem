@@ -1,14 +1,9 @@
-// const API_KEY = "RqY_t_4NwQVLby9h5ycjMsNmME0a6MgU8dn1";
-// const PROJECT_ID = "PJ63b1525fb9e2a739";
-
-
 const API_KEY = "2KJFF_FWA01yhHRIhGBBjV8tTeEqg6ZhYPIm";
 const PROJECT_ID = "PJee873a03c447c7fb";
 import telerivet from 'telerivet';
 
 function sendSingleMessage(phone, message) {
-console.log("hiii");
-// CHl9p_avxkvoYGO9rtfmho4VLt4MXfBLZIra
+
 var tr = new telerivet.API(API_KEY);
 var project = tr.initProjectById(PROJECT_ID);
 
@@ -17,7 +12,7 @@ project.sendMessage({
     to_number: phone
 }, function(err, message) {
     if (err) {
-      console.log("error")
+      console.log(err)
     } else {
       console.log("message sent!", message)
     }
@@ -55,9 +50,5 @@ async function checkGatewayStatus() {
     });
 
   }
-// sendSingleMessage(phone, message);
-
-console.log("hello")
-
 
 export default sendSingleMessage;

@@ -27,20 +27,20 @@ fetch('http://localhost:5000/users/firstDonor', {
 });
 })
 
-// function checkUser(data){
-//     console.log(data)
-//     fetch('http://localhost:5000/users/admin', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(data)
-//     }).then(res => {
-//         return res.text();
-//     })
-//         .then(data => console.log(data))
-//         .catch(error => console.log(error))
-// }
+function checkUser(data){
+    console.log(data)
+    fetch('http://localhost:5000/users/admin', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => {
+        return res.text();
+    })
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
+}
 
 function checkUser(data){
     let name = data.userName;

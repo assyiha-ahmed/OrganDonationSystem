@@ -1,0 +1,382 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Sans', sans-serif;
+}
+.wrapper{
+    width: 1170px;
+    margin: auto;
+}
+
+body{
+    /* background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+     url("image/World-Organ-Donation-Day-Blog-.webp"); */
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+.nav-area{
+    position: absolute;
+    top: 0;
+    left: 70%;
+    /* width: 100%;
+    height: 100%; */
+    z-index: 1;
+    align-items: top;
+    float: right;
+    list-style: none;
+    padding: 10px;
+    margin-right: 20px;
+    position: absolute;
+}
+.nav-area li{
+    display: inline-block;
+}
+.nav-area li a{
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-size: 14px;
+}
+.nav-area li a:hover{
+    background: #fff;
+    color: #0059ff;
+
+}
+.nav-menu li{
+    position: relative;
+    display: inline-block;
+}
+.nav-menu li a{
+    color: #000000;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-size: 14px;
+}
+.nav-menu li a::after{
+    background: #090909;
+    color: #333;
+    transform-origin: left;
+    transform: scaleX(1);
+    transition: transform.5 ;
+}
+.nav-menu li a:hover::after{
+    transform-origin: left;
+    transform: scaleX(1);
+} 
+
+.nav-menu{            
+    align-items: center;
+}
+.image-top{
+    width: 108%;
+    margin-left: -100px;
+    /* position: relative; */
+    /* margin-right:  */
+    /* align-items: center;
+     */
+    margin-top: -50px;
+    /* height: 600px; */
+    /* filter: brightness(70%); */
+}
+.logo{
+    width: 15px;
+    float: left;
+    padding-left: 2%;
+    padding-top: 1%;
+} 
+.welcome-text{
+    position: absolute;
+    margin: 10% 10% 0% 3%;
+    text-align: center;
+}
+.paragraph{
+    position: absolute;
+    width: 50%;
+    text-align: center;
+    margin-left: -30px;
+    margin-top: -170px;
+    font-size: 1.5em;
+    color: #000000;
+}
+.welcome-text{
+    position: absolute;
+    top: 30%;
+    left: 8%;
+    /* transform: translate(-50%, -50%); */
+    /* text-align: center; */
+    color: rgb(0, 0, 0);
+    text-align: center;
+    color: #000000;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+/* .welcome-text a{
+
+} */
+.footer{
+    position: relative;
+    background-color: #eaecf2;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+/* .card-wrapper{
+    width: 100%;
+    margin-top: -10px;
+    background-color: rgb(52, 52, 255);
+} */
+
+.card-img{
+    margin-left: 30px;
+    margin-top: 10px;
+    bottom: 0;
+    text-align: center;
+    height: 100px;
+    width: 100px;
+    border-radius: 70%;
+    align-items: left;
+    object-fit: cover;
+    border: 4px solid rgb(0, 91, 209);
+}
+.card-img .card-image{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+.card-image{
+    align-items: center;
+}
+body{
+    background-color: rgb(255, 255, 255);
+}
+.side-content{
+    margin: 0 150px;
+}
+.card{
+    width: 15%;
+    height: 50%;
+    border-radius: 25px;
+    background-color: #7585bb;
+    margin-left: 300px;
+    margin-top: 10px;
+}
+.card-content{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.name{
+    /* margin-top: 10px;
+    margin-left: 20px; */
+}
+.discription{
+    margin-top: 5px;
+    margin-left: 15px;
+}
+.donate{
+    margin-top: 5px;
+    margin-left: 25px;
+}
+.card-img2{
+    margin-left: 30px;
+    margin-top: 10px;
+    bottom: 0;
+    text-align: center;
+    height: 100px;
+    width: 100px;
+    border-radius: 70%;
+    align-items: center;
+    object-fit: cover;
+    border: 4px solid rgb(0, 91, 209);
+}
+.card2{
+    width: 15%;
+    height: 50%;
+    border-radius: 25px;
+    background-color: #929ec7;
+    margin-left: 500px;
+    margin-top: -220px;
+}
+.card-image2{
+    align-items: center;
+}
+.card-img2 .card-image2{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+.card-content2{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.name2{
+    /* margin-top: 10px;
+    margin-left: 20px; */
+}
+.discription2{
+    margin-top: 5px;
+    margin-left: 15px;
+}
+.donate2{
+    margin-top: 5px;
+    margin-left: 25px;
+}
+.card-img3{
+    margin-left: 30px;
+    margin-top: 10px;
+    bottom: 0;
+    text-align: center;
+    height: 100px;
+    width: 100px;
+    border-radius: 70%;
+    align-items: center;
+    object-fit: cover;
+    border: 4px solid rgb(0, 91, 209);
+}
+.card3{
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    background-color: #929ec7;
+    margin-left: 200px;
+    margin-top: -210px;
+}
+.card-image3{
+    align-items: center;
+}
+.card-img3 .card-image3{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+.card-content3{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.name3{
+    /* margin-top: 10px;
+    margin-left: 20px; */
+}
+.discription3{
+    margin-top: 5px;
+    margin-left: 15px;
+}
+.donate3{
+    margin-top: 5px;
+    margin-left: 25px;
+}
+
+.donor{
+    background-color: rgb(0, 142, 0);
+}
+.hospital{
+    background-color: rgb(0, 59, 198);
+}
+.Admin{
+    background-color: rgb(0, 46, 198);
+}
+.service{
+    width: 100%;
+    height: 60%;
+    position: relative;
+    display: inline-block;
+    background-color: #cacdda;
+    border-radius: 0%;
+}
+.service h1{
+    margin-top: 30px;
+    margin-left: 40px;
+    margin-bottom: 40px;
+}
+.image-patients{
+    margin-top: -188px ;
+    margin-left: 400px ;
+}
+.image-donors{
+    margin-left: 50px;
+}
+.image-match{
+    margin-top: -188px ;
+    margin-left: 750px;
+}
+.image-hospital{
+    margin-top: -188px ;
+    margin-left: 1100px;
+}
+.links li{
+    position: relative;
+    display: inline-block;
+    margin: 0px 0px 20px 50px;
+}
+.links li a{
+    color: #000000;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-size: 14px;
+}
+.links li a:hover{
+    background: #fffefe;
+    color: #333;
+
+}
+.gift{
+    width: 100%;
+    height: 30%;
+    background-color: rgb(255, 204, 0);
+}
+.gift h1{
+   margin: 0px 0px 20px 50px;
+}
+.footer-menu{
+    margin: 0px 0px 0px 0px;
+    color: #413f3f;
+}
+.footer-menu li{
+    position: relative;
+    display: inline-block;
+    margin: 20px 0px 0px 0  px;
+    color: #413f3f;
+}
+.footer-menu li a{
+    color: #000000;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-size: 14px;
+    color: #555555;
+}
+.footer-menu li a:hover{
+    background: #fffefe;
+    color: #413f3f;
+
+}
+.footer p{
+    
+    color: #828181;
+}
+.detail{
+    width: 100%;
+    height: 50%;
+}
+.detail p{
+    font-size: 1.5em;
+    width: 50%;
+    align-items: left;
+    text-align: left;
+}
+.detail-p{
+    margin: 20px;
+}
+
+.detail img{
+    width: 40%;
+    height: 100%;
+    margin: -280px 0px 0px 850px;
+    align-items: right;
+}
+.top{
+    margin-top: 30px;
+    margin-left: 70px;
+    font-weight: 1000;
+}

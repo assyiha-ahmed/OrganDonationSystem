@@ -1,4 +1,4 @@
-import express, { json } from 'express';
+import express, { json, response } from 'express';
 import cors from "cors"
 import { v4 as uuidv4 } from 'uuid';
 import fs, { accessSync, copyFileSync } from "fs"
@@ -11,10 +11,8 @@ import passport from 'passport';
 import flash from 'express-flash';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
+import sendSingleMessage from "../MessageExmaple/Tele_starter/app.js";
 import { USER_REFRESH_ACCOUNT_TYPE } from 'google-auth-library/build/src/auth/refreshclient.js';
-
-// import { initializePassport } from '../password-config.js';
-// initializePassport(passport)
 
 const router = express.Router();
 router.use(cors());
@@ -25,14 +23,6 @@ router.use(session({
     saveUninitialized:false
 }))
 router.use(cookieParser())
-// router.use(flash())
-// router.use(passport.initialize())
-// router.use(passport.session())
-
-
-const USERS = new Map()
-USERS.set("ASIYA", {id:1, userName:"Asiya", role:"Admin"})
-USERS.set("FENET", {id:1, userName:"Fenet", role:"Admin"})
 
 
 let users = [];
@@ -71,42 +61,59 @@ let deniedHospitals =[];
 let hospitals=[];
 
 router.get('/set-cookie', (req,res)=>{
-    console.log(req.cookies)
-    res.send("cookies 🍪")
+
+    res.cookie('newUser','false');
+    res.cookie('isEmploye',false,{maxAge: 1000 * 60 ,httpOnly: true});
+    res.send("cookies 🍪");
+
 });
 
-// router.post('/admin',(req,res) => {
-//    let name = req.body.userName;
-//    let password = req.body.password;
+router.get('/read-cookie', (req,res)=>{
+    let cookie = req.cookies;
+    res.send(cookie)
+});
 
-//     res.cookie("name",name)
-//     res.cookie("pasword", password)  
+router.post('/admin',(req,res) => {
 
-// });
+   let name = req.body.userName;
+   let password = req.body.password;
+
+   console.log(name,password)
+
+    res.cookie("name" , name);
+    res.cookie("pasword" , password);
+
+    console.log(req.cookies);
+});
 
 router.post('/hospitalLogin', async (req,res)=>{
 
     const username = req.body.userName;
     const password = req.body.password;
 
-    let hospitalInfo  = fs.readFileSync("./files/allowed.txt", "utf8");
+    let hospitalInfo  = fs.readFileSync("./files/allowedHospitals.txt", "utf8");
     hospitalInfo = JSON.parse(hospitalInfo);
 
-for(let i=0;i<hospitalInfo.length;i++){
+    console.log(hospitalInfo,"hospital")
 
-    let Password = hospitalInfo[i].password;
-    let UserName = hospitalInfo[i].userName;
+   let hospital = hospitalInfo.find((hospital) => hospital.userName == username);  
 
-    console.log(Password,UserName);
-    console.log(password,username);
+    console.log(hospital,"this-----------");
+    console.log(password,username,"-----------");
 
-    if (username == UserName  && password == Password) {
-        res.redirect('./FrontEnd/hospital.html');
-      } else {
+    let CorrectPassword = await bcrypt.compare(password, hospital.password);
+    console.log(CorrectPassword,"passsword")
+
+    if (username == hospital.userName  && CorrectPassword) {
+
+        res.cookie('name' , username);
+        res.cookie("password" , CorrectPassword);
+
+        res .redirect('./FrontEnd/hospital.html');
+      }
+       else {
         res.status(401).send('Invalid username or password');
       }
-
-}
 
 });
 
@@ -121,13 +128,20 @@ router.post('/reqAdmin', (req, res) => {
         console.log("Saved");
     });
 
-
 });
+
+
 
 async function  newFunction () {
     const password = await bcrypt.hash(strPassword,10);
     return password;
 }
+
+router.get('/check',(req,res) => {
+    var hospitals = fs.readFileSync('./files/allowedHospitals.txt', 'utf8');
+    const jsonData = JSON.stringify(hospitals);
+    res.send(jsonData);
+})
 
 router.post('/allowed', async (req, res) => {
     const hospital = req.body;
@@ -137,7 +151,8 @@ router.post('/allowed', async (req, res) => {
 
         let data = {
             userName: Name,
-            email:req.body.EmailAddress,
+            phone:req.body.ContactNumber,
+            passwordReal: strPassword,
             password: hashedPassword
         }
         console.log(data, "<-------");
@@ -148,6 +163,11 @@ router.post('/allowed', async (req, res) => {
     fs.writeFileSync('./files/allowedHospitals.txt', jsonData, (err) => {
         console.log("Saved")
     });
+
+let message =`user name = ${data.userName} /n password = ${strPassword}`
+
+    sendSingleMessage(data.phone, message);
+
     
 //   let  emailAddress = hospital.EmailAddress;
 //   console.log(emailAddress,Password,Name)

@@ -13,10 +13,10 @@ fetch("http://localhost:5000/users/getRequest", {
 
         let name = value.Name;
         let address = value.Address;
-        let email = value.EmailAddress;
+        let ContactNumber = value.ContactNumber;
 
-        console.log(name,address,email);
-        createRequest(name,address,email);     
+        console.log(name,address,ContactNumber);
+        createRequest(name,address,ContactNumber);     
     
       });
 
@@ -81,7 +81,7 @@ function allowedData(data){
         .catch(error => console.log(error))
 }
 
-function createRequest(hospital_name,hospital_address,hospital_email){
+function createRequest(hospital_name,hospital_address,phone){
 
 // Create donor-patient div
 const reqDiv = document.createElement("div");
@@ -118,14 +118,14 @@ addressDiv.appendChild(addressSpan);
 addressDiv.appendChild(address);
 
 // Create donor-bt div
-const emailDiv = document.createElement("div");
-emailDiv.classList.add("donor-bt", "info");
-const emailSpan = document.createElement("span");
-emailSpan.classList.add("spans");
-emailSpan.textContent = "Email address: ";
-const email = document.createTextNode(hospital_email);
-emailDiv.appendChild(emailSpan);
-emailDiv.appendChild(email);
+const phonelDiv = document.createElement("div");
+phonelDiv.classList.add("contact-number", "info");
+const phoneSpan = document.createElement("span");
+phoneSpan.classList.add("spans");
+phoneSpan.textContent = "Contact number: ";
+const phoneNo_ = document.createTextNode(phone);
+phonelDiv.appendChild(phoneSpan);
+phonelDiv.appendChild(phoneNo_);
 
 // Create approve button
 const allowBtn = document.createElement("button");
@@ -143,7 +143,7 @@ hospitalInfoDiv.appendChild(reqTitle);
 hospitalInfoDiv.appendChild(document.createElement("hr"));
 hospitalInfoDiv.appendChild(hospitalNameDiv);
 hospitalInfoDiv.appendChild(addressDiv);
-hospitalInfoDiv.appendChild(emailDiv);
+hospitalInfoDiv.appendChild(phonelDiv);
 hospitalInfoDiv.appendChild(allowBtn);
 hospitalInfoDiv.appendChild(denyBtn);
 

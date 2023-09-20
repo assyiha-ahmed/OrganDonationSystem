@@ -20,7 +20,7 @@ fetch('http://localhost:5000/users/disApproved', {
     }
 })
 
-.catch(error => console.log(error))
+    .catch(error => console.log(error))
 
 
 

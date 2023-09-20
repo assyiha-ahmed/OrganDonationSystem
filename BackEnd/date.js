@@ -1,6 +1,6 @@
 import fs from "fs";
 import { send } from "process";
-import sendSingleMessage from "./MessageExmaple/Telerivet-Starter/app.js";
+import sendSingleMessage from "./MessageExmaple/Tele_starter/app.js";
 
 let donorsData = fs.readFileSync('./files/firstDonor.txt',"utf8");
 donorsData = JSON.parse(donorsData);

@@ -7,131 +7,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
     <title>Document</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            font-family: 'PT Sans', sans-serif;
-        }
-        .wrapper{
-            width: 1170px;
-            margin: auto;
-        }
-
-        body{
-            /* background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-             url("image/World-Organ-Donation-Day-Blog-.webp"); */
-            height: 100vh;
-            background-size: cover;
-            background-position: center center;
-            position: relative;
-        }
-        .nav-area{
-            position: absolute;
-            top: 0;
-            left: 70%;
-            /* width: 100%;
-            height: 100%; */
-            z-index: 1;
-            align-items: top;
-            float: right;
-            list-style: none;
-            padding: 10px;
-            margin-right: 20px;
-            position: absolute;
-        }
-        .nav-area li{
-            display: inline-block;
-        }
-        .nav-area li a{
-            color: #fff;
-            text-decoration: none;
-            padding: 5px 20px;
-            font-size: 14px;
-        }
-        .nav-area li a:hover{
-            background: #fff;
-            color: #333;
-
-        }
-        .image-top{
-            filter: brightness(70%);
-        }
-        .logo{
-            width: 15px;
-            float: left;
-            padding-left: 2%;
-            padding-top: 1%;
-        } 
-        .welcome-text{
-            position: absolute;
-            margin: 20% 30%;
-            text-align: center;
-        }
-        .welcome-text{
-            position: absolute;
-            top: 0%;
-            left: 0%;
-            /* transform: translate(-50%, -50%); */
-            /* text-align: center; */
-            color: white;
-            text-align: center;
-            color: #fff;
-            text-transform: uppercase;
-            font-size: 30px;
-        }
-        /* .welcome-text a{
-
-        } */
-        .footer{
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-        }
-        .card-img{
-            margin-left: 45px;
-            margin-top: 10px;
-            bottom: 0;
-            text-align: center;
-            height: 150px  ;
-            width: 150px;
-            border-radius: 70%;
-            align-items: center;
-            object-fit: cover;
-            border: 4px solid rgb(0, 91, 209);
-        }
-        .card-img .card-image{
-            height: 100%;
-            width: 100%;
-            border-radius: 50%;
-        }
-        .card-image{
-            align-items: center;
-        }
-        body{
-            background-color: rgb(255, 255, 255);
-        }
-        .side-content{
-            margin: 0 150px;
-        }
-        .card{
-            width: 20%;
-            height: 50%;
-            border-radius: 25px;
-            background-color: #929ec7;
-        }
-
-    </style>
+    <link rel="stylesheet" href="sampleHome.css">
 </head>
 <body>
     <div class="top">
+        <div class="nav-menu">
+            <li class="home"><a href="">Home</a></li>
+            <li><a href="#">Feature</a></li>
+            <li><a href="#">About</a></li>
+        </div>
         <img src="image/World-Organ-Donation-Day-Blog-.webp" class="image-top">
         <div class="nav-area">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Home</a></li>
+            <li><a href="#" class="donor">Donate</a></li>
+            <li><a href="#" class="hospital">Hospital</a></li>
+            <li><a href="#" class="Admin">Admin</a></li>
         </div>
         <div class="wrapper">
             <!-- <div class="logo">
@@ -141,11 +30,20 @@
         </div>
 
         <div class="welcome-text">
-            <h1>organ Donation</h1>
-            <p>welcome to  organ donation</p>
+            <!-- <h1>organ Donation</h1> -->
+            <p> Register now and Save a life today.</p>
+            
         </div>
+        <p class="paragraph">We aim to save lives by providing a platform where people can easily register as organ donors and healthcare professionals can manage organ donations and transplants.</p>
+        <!-- <p class="paragraph">Organ donation is a selfless act that can save or transform the life of another person. It is a gift that gives hope to those who are waiting for a transplant.
+
+            Registering to become an organ donor is quick and easy. Simply create an account on the ODMS website and complete the online donor registration form. Once you have registered, your information will be stored in the ODMS database. If you become eligible for organ donation, your information will be shared with healthcare professionals who are searching for a match for their patients.
+            
+            The ODMS is a secure system that can only be accessed by authorized users. You can log in to your account at any time to view your organ donation information and to make changes to your preferences.</p> -->
     </div>
 
+
+    
     <div class="side-container">
         <div class="side-content">
             <div class="card-wrapper">
@@ -161,19 +59,99 @@
                         <h2 class="name">Donate Now</h2>
                         <p class="discription">hey</p>
 
-                        <button class="donate">Donate Now</button>
+                        <button class="donate" onclick="location='hospital.html'">Donate Now</button>
                     </div>
+                </div>
+                <div class="card2">
+                    <div class="image-content2">
+                        <span class="overlay2"></span>
+
+                        <div class="card-image2">
+                            <img src="image/donate.jpg" class="card-img2">
+                        </div>
+                    </div>
+                    <div class="card-content2">
+                        <h2 class="name2">Donate Now</h2>
+                        <p class="discription2">hey</p>
+
+                        <button class="donate2">Donate Now</button>
+                    </div>
+                    <div class="card3">
+                        <div class="image-content3">
+                            <span class="overlay3"></span>
+    
+                            <div class="card-image3">
+                                <img src="image/World-Organ-Donation-Day-Blog-.webp" class="card-img3">
+                            </div>
+                        </div>
+                        <div class="card-content3">
+                            <h2 class="name3">Donate Now</h2>
+                            <p class="discription3">hey</p>
+    
+                            <button class="donate3">Donate Now</button>
+                        </div>
+                    </div>
+    
                 </div>
             </div>
         </div>
     </div>
 
-    
+
+    <div class="service">
+        <h1>Our Service</h1>
+        <div class="image-donors">
+            <img src="image/donor1.jpg" class="donor1">
+            <p class="donor-p">Donors can easily register</p>
+        </div>
+        <div class="image-patients">
+            <img src="image/donor1.jpg" class="donor1">
+            <p class="donor-p">Donors can easily register</p>
+        </div>
+
+        <div class="image-match">
+            <img src="image/donor1.jpg" class="donor1">
+            <p class="donor-p">Donors can easily register</p>
+        </div>
+        <div class="image-hospital">
+            <img src="image/donor1.jpg" class="donor1">
+            <p class="donor-p">Donors can easily register</p>
+        </div>
+    </div>
+
+
+
+    <div class="gift">
+        <h1>Gift Of Life</h1>
+        <div class="links">
+            <li><a href="#">Value</a></li>
+            <li><a href="#">Vision</a></li>
+            <li><a href="#">Mission</a></li>
+        </div>
+    </div>
+
+
+    <div class="detail">
+        <div class="detail-p">
+        <p >Over 100,000 people in Ethiopia are waiting for a life-saving organ transplant. That's 100,000 people who are hoping for a second chance at life. Every day, more people are added to the waiting list. Organ donation is a selfless act that can save or transform the life of another person. It is a gift that gives hope to those who are waiting for a transplant.
+
+            Registering to become an organ donor is quick and easy. If you are considering becoming an organ donor, please know that you are making a difference. Your donation could save or improve the lives of many people.</p></div>
+            <img src="image/waitingList.jpg" alt="" srcset="">
+    </div>
 
     <div class="footer">
         <footer>
-            <h1>helo</h1>
+            <div class="footer-menu">
+                <li><a class="home" href="sample.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Features</a></li>
+            </div>
+            <hr>
+            <p>@2023 Company, Inc</p>
         </footer>
     </div>
+    <script type=module src=ODMS.js></script>
 </body>
 </html>

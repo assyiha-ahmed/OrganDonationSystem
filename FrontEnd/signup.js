@@ -8,7 +8,7 @@ btn.addEventListener("click",(e) =>{
 
     const name = document.querySelector('.name').value;
     const address = document.querySelector('.address').value;
-    const emailAddress = document.querySelector('.email-address').value;
+    const contactNo_ = document.querySelector('.contact-number').value;
 
     const success = (position) =>{
         console.log(position)
@@ -18,7 +18,7 @@ btn.addEventListener("click",(e) =>{
         let request={
             Name : name, 
             Address : address,
-            EmailAddress : emailAddress,
+            ContactNumber : contactNo_,
             lat : latitude,
             lng : longitude
         }
