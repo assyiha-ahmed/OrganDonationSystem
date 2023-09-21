@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(cors())
 
 app.get("/", function (request, response) {
+    console.log("Here")
     response.sendFile(__dirname + "/preRegistration.html");
 });
 
@@ -27,6 +28,7 @@ async function comparePassword(password, hospitalPassword) {
     return compare;
 }
 app.get('/login', (req, res) => {
+    console.log("Here")
     res.sendFile(__dirname + "/hospitalForm.html");
 })
 
@@ -59,7 +61,7 @@ app.post("/hospitals", async (req, res) => {
             res.cookie('name', username);
             res.cookie("password", CorrectPassword);
 
-            res.redirect('./FrontEnd/hospital.html');
+            res.json({location: "http://localhost:5000/logedin"});
         }
         else {
             res.status(401).send('Invalid username or password');
@@ -80,8 +82,8 @@ app.post("/", function (req, res) {
 
 });
 
-app.listen(8000, function () {
+app.listen(5000, function () {
 
-    console.log("server running on port 8000");
+    console.log("server running on port 6000");
 
 });

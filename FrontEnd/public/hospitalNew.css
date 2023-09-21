@@ -1,5 +1,5 @@
 body{
-    background-image: url('image/hosp.png');
+    background-image: url('/image/hosp.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-size: 1350px 1000px;

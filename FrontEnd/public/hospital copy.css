@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    box-sizing: border-box;
+}
+
+.wrapper{
+    width: 90%;
+    margin: auto;
+    align-items: left;
+}
+.container{
+    background-color: #000000;
+    float: right;
+    height: 25px;
+    width: 40px;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menuLogo{
+    height: 3px;
+    width: 30px;
+    background-color: snow;
+}
+
+.menu{
+    width: 25%;
+    height: 100vh;
+    background-color: #3498db;
+    padding: 50px;
+    transform: translateX(-500px);
+    transition: 0.5s;
+}
+
+.menu li{
+    list-style-type: none;
+    border-bottom: 0.5px;
+    padding: 25px;
+    text-align: center;
+}
+
+.showmenu{
+    transform: translateX(0);
+}
+
+.menu li:last-child{
+    border-bottom: none;
+}
+
+.menu li:first-child{
+    font-weight: bold;
+}
+
+.menu li a{
+color: snow;
+text-decoration: none;
+font-size: 20px;
+transition: font-weight 0.2s;
+}
+
+.menu li a{
+    font-weight: bold;
+
+}
+
+.menu li a:hover{
+    font-weight: bold;
+}
+
+@media screen and(min-width:1000px){
+    .menu{
+        width: 500px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .menu li a{
+        font-size: 16px;
+    }    
+}
+
+.form{
+    display: block;
+}
+
+.page{
+    display: none;
+}
+    
+
+
+/* 
+a,button{
+    cursor: pointer;
+}
+
+nav{
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    width: 250px;
+}
+
+.navigation{
+    position: fixed;
+    width: 350px;
+    height: 100%;
+    background-color: #000;
+    transition: .5s;
+}
+
+.navigation, ul, .li{
+    color: #fff;
+    text-align: right;
+    text-transform: uppercase;
+    list-style-type: none;
+    font-size: 1.5em;
+    padding: 20px 30px;
+    border-bottom: 1pt solid #252525;
+}
+
+.bars, .bar{
+    position: fixed;
+}
+
+.bars{
+    display: block;
+    top: 5%;
+    left: 95%;
+    width: 30px;
+    height: 30px;
+    transform: translateY(-50%);
+    border: 0;
+    background: 0 0;
+}
+
+.bar{
+    top: 3px;
+    background: #000;
+    width: 100%;
+    height: 4px;
+    transition: all .3s ease-in;
+}
+
+#bar2{
+    top: 11px;
+}
+
+#bar3{
+    top: 19px;
+}   */
