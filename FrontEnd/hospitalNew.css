@@ -1,0 +1,101 @@
+.donor{
+    background-color: rgb(163, 0, 0);
+    width: 30%;
+    height: 10%;
+    padding: 50px 30px;
+    font-size: 30px;
+    margin-top: 120px;
+    margin-left: 100px;
+    margin-right: 300px;
+    border-radius: 5%;
+
+}
+
+.patient{
+    background-color: rgb(163, 0, 0);
+    width: 30%;
+    height: 10%;
+    padding: 50px 30px;
+    font-size: 30px;
+    margin-top: -135px;
+    margin-left: 750px;
+    margin-right: 300px;
+    border-radius: 5%;
+
+}
+
+.match{
+    background-color: rgb(163, 0, 0);
+    width: 30%;
+    height: 10%;
+    padding: 50px 30px;
+    font-size: 30px;
+    margin-top: 120px;
+    margin-left: 100px;
+    margin-right: 300px;
+    border-radius: 5%;
+
+}
+
+.donorsHistory{
+    background-color: rgb(163, 0, 0);
+    width: 30%;
+    height: 10%;
+    padding: 50px 30px;
+    font-size: 30px;
+    margin-top: -135px;
+    margin-left: 750px;
+    margin-right: 300px;
+    border-radius: 5%;
+
+}
+
+.patientsHistory{
+    background-color: rgb(163, 0, 0);
+    width: 30%;
+    height: 10%;
+    padding: 50px 30px;
+    font-size: 30px;
+    margin-top: 120px;
+    margin-left: 100px;
+    margin-right: 300px;
+    border-radius: 5%;
+
+}
+
+.approved{
+    background-color: rgb(163, 0, 0);
+    width: 30%;
+    height: 10%;
+    padding: 50px 30px;
+    font-size: 30px;
+    margin-top: -155px;
+    margin-left: 750px;
+    margin-right: 300px;
+    border-radius: 5%;
+
+}
+.disapproved{
+    background-color: rgb(163, 0, 0);
+    width: 30%;
+    height: 10%;
+    padding: 50px 30px;
+    font-size: 30px;
+    margin-top: 120px;
+    margin-left: 100px;
+    margin-right: 300px;
+    border-radius: 5%;
+
+}
+
+.firstDonor{
+    background-color: rgb(163, 0, 0);
+    width: 30%;
+    height: 10%;
+    padding: 50px 30px;
+    font-size: 30px;
+    margin-top: 120px;
+    margin-left: 100px;
+    margin-right: 300px;
+    border-radius: 5%;
+}
