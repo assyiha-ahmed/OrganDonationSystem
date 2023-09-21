@@ -1,3 +1,10 @@
+body{
+    background-image: url('image/hosp.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: 1350px 1000px;
+}
+
 .donor{
     background-color: rgb(163, 0, 0);
     width: 30%;
@@ -69,7 +76,7 @@
     height: 10%;
     padding: 50px 30px;
     font-size: 30px;
-    margin-top: -155px;
+    margin-top: -135px;
     margin-left: 750px;
     margin-right: 300px;
     border-radius: 5%;
@@ -94,8 +101,9 @@
     height: 10%;
     padding: 50px 30px;
     font-size: 30px;
-    margin-top: 120px;
-    margin-left: 100px;
+    margin-top: -135px;
+    margin-left: 750px;
     margin-right: 300px;
     border-radius: 5%;
+
 }

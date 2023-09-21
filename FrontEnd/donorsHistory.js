@@ -6,7 +6,7 @@ fetch('http://localhost:5000/users/donorsHistory', {
     return res.json();
 })
     .then(data => {
-        donorsData = JSON.parse(data);
+        donorsData = JSON.parse(data); 
         console.log(donorsData);
 
         for (let i = 0; i < donorsData.length; i++) {
