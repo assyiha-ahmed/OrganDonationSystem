@@ -9,7 +9,7 @@ fetch('http://localhost:5000/users/patientsHistory', {
       
        for(let i = 0; i < patientsData.length; i++ ){
         creatPatient(patientsData[i].name,patientsData[i].age,patientsData[i].bloodType);
-
+        
        }
 
     })
@@ -19,6 +19,8 @@ fetch('http://localhost:5000/users/patientsHistory', {
 
 
     function creatPatient(patients_name,patients_age,patients_bloodType){
+
+        console.log("hello  function")
         var Name = patients_name;
         var age = patients_age;
         var bt = patients_bloodType;

@@ -1,4 +1,6 @@
 const express = require ("express");
+
+
 const app = express();
 
 app.use(express.static("public"));
@@ -7,9 +9,20 @@ app.get("/BackEnd" ,function(request , response){
     response.sendFile(__dirname+"./routes/users.js");
 });
 
-app.get("/hospital" ,function(request , response){
+app.get("/hospitals", (res, req)=>{
+    response.sendFile(+"./");
+})
+
+async function  comparePassword (password, hospitalPassword) {
+    const compare = await bcrypt.compare(password, hospitalPassword);
+    return compare;
+}
+app.get('/helloworld', (req,res)=>{
+    res.sendFile(__dirname+"../FrontEnd/hospitalForm.html");
+})
+
+app.get("/hospital" ,function (request , response){
     
-    response.sendFile(__dirname+"../FrontEnd/hospitalForm.html");
 
     const username = req.body.userName;
     const password = req.body.password;
@@ -24,7 +37,7 @@ app.get("/hospital" ,function(request , response){
     console.log(hospital,"this-----------");
     console.log(password,username,"-----------");
 
-    let CorrectPassword = await bcrypt.compare(password, hospital.password);
+    let CorrectPassword = comparePassword(password, hospital.password);
     console.log(CorrectPassword,"passsword")
 
     if (username == hospital.userName  && CorrectPassword) {
