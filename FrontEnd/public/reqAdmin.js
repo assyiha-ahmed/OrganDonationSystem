@@ -77,7 +77,10 @@ function allowedData(data){
     }).then(res => {
         return res.text();
     })
-        .then(data => console.log(data))
+        .then(data =>{
+            
+            alert(data);
+        })
         .catch(error => console.log(error))
 }
 

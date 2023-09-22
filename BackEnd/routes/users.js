@@ -135,7 +135,7 @@ router.post('/reqAdmin', (req, res) => {
     fs.writeFileSync('./files/requestedHospitals.txt', jsonData, (err) => {
         console.log("Saved");
     });
-
+    res.send("Registered! Wait for our response.")
 });
 
 
@@ -172,7 +172,7 @@ router.post('/allowed', async (req, res) => {
         console.log("Saved")
     });
 
-let message =`user name = ${data.userName} /n password = ${strPassword}`
+let message =`user name = ${data.userName} ` + '\n' +` password = ${strPassword}` + '\n' + "Login Link:localhost://5001/login" 
 
     sendSingleMessage(data.phone, message);
 
@@ -200,7 +200,7 @@ let message =`user name = ${data.userName} /n password = ${strPassword}`
 //     console.log("sent :"+info.response);
 // });
 
-console.log(req.session)
+    res.send("Message Sent!")
 });
 
 router.post('/denied', (req, res) => {

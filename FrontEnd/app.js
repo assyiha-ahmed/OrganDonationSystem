@@ -33,7 +33,7 @@ async function comparePassword(password, hospitalPassword) {
 
 app.get("/logout", (req,res)=>{
 
-    res.cookie('token', "1234", { 
+    res.cookie('token', "0", { 
         maxAge: 3600000, // Cookie expires in 1 hour
         httpOnly: true, // Set the HttpOnly flag
       });
@@ -45,7 +45,7 @@ app.get('/login', async (req, res) => {
     let myCookieValue = req.cookies.token || undefined;
 
     
-    if (myCookieValue && comparePassword(correctCookie[0], myCookieValue)) {
+    if (correctCookie[0] === myCookieValue) {
         res.sendFile(__dirname + "/hospital.html");
     }
     res.sendFile(__dirname + "/hospitalForm.html");
@@ -56,7 +56,7 @@ app.get('/logedin', async (req, res) => {
     let myCookieValue = req.cookies.token || undefined;
 
 
-    if (myCookieValue && await comparePassword(correctCookie[0], myCookieValue)) {
+    if (correctCookie[0] === myCookieValue) {
         res.sendFile(__dirname + "/hospital.html");
     } 
     else {
@@ -66,7 +66,6 @@ app.get('/logedin', async (req, res) => {
 })
 
 app.post("/hospitals", async (req, res) => {
-
 
     const username = req.body.userName;
     const password = req.body.password;
@@ -78,21 +77,20 @@ app.post("/hospitals", async (req, res) => {
 
 
     let hospital = hospitalInfo.find((hospital) => hospital.userName == username);
+    console.log(await bcrypt.compare(password, hospital.password))
 
-    //     console.log(hospital,"this-----------");
-    //     console.log(password,username,"-----------");
     if (hospital) {
         let CorrectPassword = await bcrypt.compare(password, hospital.password);
         console.log(CorrectPassword, "passsword");
 
         if (CorrectPassword) {
 
-            res.cookie('token', hospital.password, { 
+            res.cookie('token', correctCookie[0], { 
                 maxAge: 3600000, // Cookie expires in 1 hour
                 httpOnly: true, // Set the HttpOnly flag
               });
 
-            res.json({ location: "http://localhost:5000/logedin" });
+            res.json({ location: "http://localhost:5001/logedin" });
         }
         else {
             res.status(401).send('Invalid username or password');
@@ -111,6 +109,14 @@ app.post("/hospitals", async (req, res) => {
 
 app.get("/donor", function (req, res) {
     res.sendFile(__dirname + "/donor.html");
+});
+
+app.get("/admin", function (req, res) {
+    res.sendFile(__dirname + "/admin.html");
+});
+
+app.get("/about", function (req, res) {
+    res.sendFile(__dirname + "/about.html");
 });
 
 
@@ -149,8 +155,27 @@ app.get("/disapproved", function (req, res) {
     res.sendFile(__dirname + "/disapproved.html");
 });
 
-app.listen(5000, function () {
+app.get("/main", function (req, res) {
+    res.sendFile(__dirname + "/ODMS-MAIN.html");
+});
 
-    console.log("server running on port 6000");
+app.get("/firstDonor", function (req, res) {
+    res.sendFile(__dirname + "/firstDonor.html");
+});
+
+app.get("/preRegistration", function (req, res) {
+    res.sendFile(__dirname + "/preRegistration.html");
+});
+
+app.get("/signup", function (req, res) {
+    res.sendFile(__dirname + "/signup.html");
+});
+app.get("/reqAdmin", function (req, res) {
+    res.sendFile(__dirname + "/reqAdmin.html");
+});
+
+app.listen(5001, function () {
+
+    console.log("server running on port 5001");
 
 });

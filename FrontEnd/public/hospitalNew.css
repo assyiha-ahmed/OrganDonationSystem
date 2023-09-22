@@ -1,8 +1,8 @@
 body{
     background-image: url('/image/hosp.png');
-    background-size: cover;
+    background-size:cover;
     background-repeat: no-repeat;
-    background-size: 1350px 1000px;
+    /* background-size: 1350px 1050px; */
 }
 
 .donor{
@@ -19,8 +19,8 @@ body{
 
 }
 
-.patient{
-    
+.patient{ 
+
     background-color: white;
     width: 30%;
     height: 10%;

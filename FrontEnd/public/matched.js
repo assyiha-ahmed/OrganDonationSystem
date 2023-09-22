@@ -32,7 +32,7 @@ fetch('http://localhost:5000/users/matched', {
     .then(response => response.text())                                                                                                                  
     .then(data => console.log(data));
 
-
+    window.location = "http://localhost:5001/matched"
             // console.log(matchedData[i], matchedData[i+1])
         })
     }
@@ -61,7 +61,7 @@ fetch('http://localhost:5000/users/matched', {
 
 
             // console.log(matchedData[i], matchedData[i+1])
-        
+            window.location = "http://localhost:5001/matched"
         })
     }
 

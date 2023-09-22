@@ -13,7 +13,7 @@ btn.addEventListener("click",(e) =>{
         userName: UserName
     }
 
-    fetch('http://localhost:5000/hospitals', {
+    fetch('http://localhost:5001/hospitals', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

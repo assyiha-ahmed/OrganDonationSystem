@@ -19,19 +19,17 @@ btn.addEventListener("click",(e) =>{
             Name : name, 
             Address : address,
             ContactNumber : contactNo_,
-            lat : latitude,
-            lng : longitude
         }
-    
+        console.
             addData(request);
-            
-        const geoApiurl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
+            // const geoApiurl = 12334
+        //  = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
      
-        fetch(geoApiurl)
-        .then(res => res.json())
-        .then(data =>{
-           const City = data.locality;
-        })
+        // fetch(geoApiurl)
+        // .then(res => res.json())
+        // .then(data =>{
+        //    const City = data.locality;
+        // })
 
 
     }
@@ -51,6 +49,8 @@ btn.addEventListener("click",(e) =>{
 });
 
 function addData(data){
+    console.log("Helooooooooooooooooooooooooo")
+    alert("Registered! Wait for our response.");
     fetch('http://localhost:5000/users/reqAdmin',{
         method: 'POST',
         headers: {
@@ -58,8 +58,12 @@ function addData(data){
         },
         body: JSON.stringify(data)
     }).then(res => {
+        alert(res.text());
         return res.text();
     })
-        .then(data => console.log(data))
+        .then(data =>{ 
+            alert(data);
+            console.log(data)
+        })
         .catch(error => console.log(error))
 }
