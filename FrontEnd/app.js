@@ -1,5 +1,6 @@
 const express = require("express");
 const bcrypt = require('bcrypt');
+const cookieParser = require('cookie-parser');
 
 const fs = require("fs");
 
@@ -9,8 +10,11 @@ const app = express();
 
 app.use(express.static("public"));
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(cors())
+
+let correctCookie = ["6465"];
 
 app.get("/", function (request, response) {
     console.log("Here")
@@ -27,13 +31,33 @@ async function comparePassword(password, hospitalPassword) {
     console.log(compare, "<------------")
     return compare;
 }
-app.get('/login', (req, res) => {
-    console.log("Here")
+app.get("/token", (req,res)=>{
+
+      // Read the 'my_cookie' value if it exists
+  const myCookieValue = req.cookies.token || 'Cookie not set';
+
+  res.send(`Cookie Value: ${myCookieValue}`);
+})
+app.get('/login', async (req, res) => {
+
+    let myCookieValue = req.cookies.token || undefined;
+    console.log(myCookieValue, comparePassword(correctCookie[0], myCookieValue));
+    
+    if (myCookieValue && comparePassword(correctCookie[0], myCookieValue)) {
+        res.sendFile(__dirname + "/hospital.html");
+    }
     res.sendFile(__dirname + "/hospitalForm.html");
 })
 
-app.get('/logedin', (req, res)=>{
-    res.sendFile(__dirname + "/hospital.html");
+app.get('/logedin', async (req, res) => {
+    
+    let myCookieValue = req.cookies.token || undefined;
+    console.log(myCookieValue, comparePassword(correctCookie[0], myCookieValue));
+
+    if (myCookieValue && comparePassword(correctCookie[0], myCookieValue)) {
+        res.sendFile(__dirname + "/hospital.html");
+    }
+    res.sendFile(__dirname + "/hospitalForm.html");
 })
 
 app.post("/hospitals", async (req, res) => {
@@ -58,10 +82,12 @@ app.post("/hospitals", async (req, res) => {
 
         if (CorrectPassword) {
 
-            res.cookie('name', username);
-            res.cookie("password", CorrectPassword);
+            res.cookie('token', hospital.password, { 
+                maxAge: 3600000, // Cookie expires in 1 hour
+                httpOnly: true, // Set the HttpOnly flag
+              });
 
-            res.json({location: "http://localhost:5000/logedin"});
+            res.json({ location: "http://localhost:5000/logedin" });
         }
         else {
             res.status(401).send('Invalid username or password');
