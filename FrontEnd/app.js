@@ -28,20 +28,21 @@ app.get("/registered", function (request, response) {
 
 async function comparePassword(password, hospitalPassword) {
     const compare = await bcrypt.compare(password, hospitalPassword);
-    console.log(compare, "<------------")
     return compare;
 }
-app.get("/token", (req,res)=>{
+app.get("/logout", (req,res)=>{
 
-      // Read the 'my_cookie' value if it exists
-  const myCookieValue = req.cookies.token || 'Cookie not set';
+    res.cookie('token', "1234", { 
+        maxAge: 3600000, // Cookie expires in 1 hour
+        httpOnly: true, // Set the HttpOnly flag
+      });
 
-  res.send(`Cookie Value: ${myCookieValue}`);
+    res.send('Cookie changed!');
 })
 app.get('/login', async (req, res) => {
 
     let myCookieValue = req.cookies.token || undefined;
-    console.log(myCookieValue, comparePassword(correctCookie[0], myCookieValue));
+
     
     if (myCookieValue && comparePassword(correctCookie[0], myCookieValue)) {
         res.sendFile(__dirname + "/hospital.html");
@@ -52,12 +53,15 @@ app.get('/login', async (req, res) => {
 app.get('/logedin', async (req, res) => {
     
     let myCookieValue = req.cookies.token || undefined;
-    console.log(myCookieValue, comparePassword(correctCookie[0], myCookieValue));
 
-    if (myCookieValue && comparePassword(correctCookie[0], myCookieValue)) {
+
+    if (myCookieValue && await comparePassword(correctCookie[0], myCookieValue)) {
         res.sendFile(__dirname + "/hospital.html");
+    } 
+    else {
+        res.sendFile(__dirname + "/hospitalForm.html");
     }
-    res.sendFile(__dirname + "/hospitalForm.html");
+
 })
 
 app.post("/hospitals", async (req, res) => {
