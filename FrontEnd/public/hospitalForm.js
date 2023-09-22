@@ -13,20 +13,20 @@ btn.addEventListener("click",(e) =>{
         userName: UserName
     }
 
-    fetch('http://localhost:8000/hospitals', {
+    fetch('http://localhost:5001/hospitals', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(hospitalData``)
+        body: JSON.stringify(hospitalData)
     }).then(res => {
     return res.json();
 })
 .then(data => {
-    let hospitals = JSON.parse(data);
+    console.log(data);
 
-    
-
+    if (data.location != undefined)
+    window.location= data.location;
 
 
 
