@@ -1,0 +1,154 @@
+div{
+  border-radius: 10%;
+  border-top: rgb(0, 81, 255);
+}
+
+.pages{
+    background-color: rgb(0, 0, 8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      color: black;
+    }
+    
+    li{
+      display: inline-block;
+      margin-right: 10px;
+    }
+    
+    a {
+      text-decoration: none;
+      color: blue;
+    }
+    
+    a:hover {
+      color: red;
+    }
+    .image{
+      width: 400px;
+    height: 200px;
+    image-orientation: inherit;
+    object-fit: cover;
+    border: 1px solid black;
+  
+    }
+    .h1{
+      color: rgb(0, 0, 0);
+    }
+  
+    *{
+      margin: 0px;
+      padding: 0px;
+    }
+    .container{
+      background-color:rgba(0,100,0,0.3);
+      padding:  4px 10px 10px 25px;
+      display: inline-block;
+      margin: 120px 100px 50px 400px;
+      width: 270px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+    
+    }   
+
+    .approvedMatches{
+      color: rgb(12, 3, 3);
+      font-size: 20px;
+      display: flex;
+      float: left;
+      flex-direction: column;
+      text-align: center;
+      border-top: rgb(0, 102, 255);
+      /* border-left: solid 5px rgb(19, 17, 17); */
+      margin: 50px;
+
+    }
+    .approvedMatche{
+      color: rgb(12, 3, 3);
+      font-size: 20px;
+      display: flex;
+      float: right;
+      flex-direction: column;
+      text-align: center;
+      border-left: solid 5px rgb(19, 17, 17);
+      margin: 50px;
+
+    }
+
+.disApprovedMatches{
+  color: rgb(12, 3, 3);
+  font-size: 20px;
+  display: flex;
+  float: left;
+  flex-direction: column;
+  text-align: center;
+  /* border-left: solid 5px rgb(19, 17, 17); */
+  margin: 50px;
+  border-top: rgb(0, 102, 255);
+}
+    .heading{
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      color: brown;
+      font-size: 30px;
+    }
+
+.approvedMatches{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.disApprovedMatches{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.singl-match {
+  width: 400px;
+  background-color: #F0F3E8;
+  padding: 20px;
+  padding-bottom: 10px;
+  
+}
+
+.donor-patient {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.donor-title,
+.patient-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+
+}
+
+.donor-title,
+.patient-title {
+  margin-bottom: 5px;
+}
+
+.info {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  margin: 5px 0;
+  padding: 0;
+
+}
+
+.myForm{
+
+}
+

@@ -6,7 +6,8 @@ body{
 }
 
 .donor{
-    background-color: rgb(163, 0, 0);
+    
+    background-color: white;
     width: 30%;
     height: 10%;
     padding: 50px 30px;
@@ -19,7 +20,8 @@ body{
 }
 
 .patient{
-    background-color: rgb(163, 0, 0);
+    
+    background-color: white;
     width: 30%;
     height: 10%;
     padding: 50px 30px;
@@ -32,7 +34,8 @@ body{
 }
 
 .match{
-    background-color: rgb(163, 0, 0);
+    
+    background-color: white;
     width: 30%;
     height: 10%;
     padding: 50px 30px;
@@ -45,7 +48,8 @@ body{
 }
 
 .donorsHistory{
-    background-color: rgb(163, 0, 0);
+    
+    background-color: white;
     width: 30%;
     height: 10%;
     padding: 50px 30px;
@@ -58,7 +62,8 @@ body{
 }
 
 .patientsHistory{
-    background-color: rgb(163, 0, 0);
+    
+    background-color: white;
     width: 30%;
     height: 10%;
     padding: 50px 30px;
@@ -71,7 +76,8 @@ body{
 }
 
 .approved{
-    background-color: rgb(163, 0, 0);
+    
+    background-color: white;
     width: 30%;
     height: 10%;
     padding: 50px 30px;
@@ -83,7 +89,8 @@ body{
 
 }
 .disapproved{
-    background-color: rgb(163, 0, 0);
+    
+    background-color: white;
     width: 30%;
     height: 10%;
     padding: 50px 30px;
@@ -96,7 +103,7 @@ body{
 }
 
 .firstDonor{
-    background-color: rgb(163, 0, 0);
+    background-color: white;
     width: 30%;
     height: 10%;
     padding: 50px 30px;

@@ -30,6 +30,7 @@ async function comparePassword(password, hospitalPassword) {
     const compare = await bcrypt.compare(password, hospitalPassword);
     return compare;
 }
+
 app.get("/logout", (req,res)=>{
 
     res.cookie('token', "1234", { 
@@ -108,8 +109,44 @@ app.post("/hospitals", async (req, res) => {
 
 
 
-app.post("/", function (req, res) {
+app.get("/donor", function (req, res) {
+    res.sendFile(__dirname + "/donor.html");
+});
 
+
+app.get("/patient", function (req, res) {
+    res.sendFile(__dirname + "/patient.html");
+});
+
+
+app.get("/donor.html", function (req, res) {
+    res.sendFile(__dirname + "/donor.html");
+});
+
+
+app.get("/matched", function (req, res) {
+    res.sendFile(__dirname + "/matched.html");
+});
+
+
+app.get("/donorsHistory", function (req, res) {
+    res.sendFile(__dirname + "/donorsHistory.html");
+});
+
+app.get("/patientsHistory", function (req, res) {
+    res.sendFile(__dirname + "/patientsHistory.html");
+});
+
+app.get("/approved", function (req, res) {
+    res.sendFile(__dirname + "/approved.html");
+});
+
+app.get("/firstDonor", function (req, res) {
+    res.sendFile(__dirname + "/firstDonor.html");
+});
+
+app.get("/disapproved", function (req, res) {
+    res.sendFile(__dirname + "/disapproved.html");
 });
 
 app.listen(5000, function () {
