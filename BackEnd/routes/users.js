@@ -393,7 +393,12 @@ router.get('/deleteAproved', (req, res) => {
     let idTwo = req.query.idTwo;
 
     let matched = fs.readFileSync('./files/matched.txt', 'utf8');
+    let donor = fs.readFileSync('./files/donor.txt', 'utf8');
+    let patient = fs.readFileSync('./files/patient.txt', 'utf8');
+
     let matchedJsonData = JSON.parse(matched);
+    let donorJsonData = JSON.parse(donor);
+    let patientJsonData = JSON.parse(patient);
 
     approved.push(matchedJsonData.find((user) => user.id == idOne));
     approved.push(matchedJsonData.find((user) => user.id == idTwo));
@@ -402,12 +407,23 @@ router.get('/deleteAproved', (req, res) => {
         console.log("Saved");
     });
 
+    let newDoner = donorJsonData.filter((user) => user.id != idOne);
+    let newPatient = patientJsonData.filter((user) => user.id != idTwo);
+
     matchedJsonData = matchedJsonData.filter((user) => user.id != idOne);
     matchedJsonData = matchedJsonData.filter((user) => user.id != idTwo);
 
 
 
     fs.writeFileSync("./files/matched.txt", JSON.stringify(matchedJsonData), (err) => {
+        console.log("Saved");
+    });
+
+    fs.writeFileSync("./files/donor.txt", JSON.stringify(newDoner), (err) => {
+        console.log("Saved");
+    });
+
+    fs.writeFileSync("./files/patient.txt", JSON.stringify(newPatient), (err) => {
         console.log("Saved");
     });
 

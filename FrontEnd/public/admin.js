@@ -49,8 +49,8 @@ function checkUser(data){
     console.log(name,password)
 
    if(name == "fenas" && password == "fenas1234"){
-        window.location="reqAdmin.html";
-        alert("login successfully");
+        window.location="http://localhost:5001/reqAdmin";
+        alert("login successful");
    }
    else{
     alert("Invalid Information!")

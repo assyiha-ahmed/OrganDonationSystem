@@ -1,1 +1,1 @@
-[{"Name":"2","Address":"","ContactNumber":"","lat":8.5263486,"lng":39.2583293},{"Name":"tedla","Address":"Bishoftu, Ethiopia","ContactNumber":"+251977709491","lat":8.5263486,"lng":39.2583293},{"Name":"BISHOFTU","Address":"BISHOFTU","ContactNumber":"+251913739099","lat":8.5263486,"lng":39.2583293}]
+[{"Name":"asu general hospital","Address":"USA","ContactNumber":"+251977709491","lat":9.026,"lng":38.7439},{"Name":"paulos","Address":"here","ContactNumber":"+251977709491","lat":9.026,"lng":38.7439}]
