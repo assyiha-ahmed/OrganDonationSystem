@@ -1,1 +1,1 @@
-[{"Name":"asu general hospital","Address":"USA","ContactNumber":"+251977709491","lat":9.026,"lng":38.7439},{"Name":"paulos","Address":"here","ContactNumber":"+251977709491","lat":9.026,"lng":38.7439}]
+[{"Name":"paulos","Address":"bishoftu","ContactNumber":"+251912345678","lat":9.026,"lng":38.7439}]

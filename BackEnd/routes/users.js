@@ -14,11 +14,6 @@ import cookieParser from 'cookie-parser';
 import sendSingleMessage from "../MessageExmaple/Tele_starter/app.js";
 import { USER_REFRESH_ACCOUNT_TYPE } from 'google-auth-library/build/src/auth/refreshclient.js';
 
-    
-
-
-
-
 const router = express.Router();
 router.use(cors());
 router.use(express.urlencoded({extended: false}))
@@ -159,7 +154,7 @@ router.post('/allowed', async (req, res) => {
 
         let data = {
             userName: Name,
-            phone:req.body.ContactNumber,
+            phone: req.body.ContactNumber,
             passwordReal: strPassword,
             password: hashedPassword
         }
@@ -171,6 +166,32 @@ router.post('/allowed', async (req, res) => {
     fs.writeFileSync('./files/allowedHospitals.txt', jsonData, (err) => {
         console.log("Saved")
     });
+
+    let DH = JSON.parse(jsonData);
+    console.log(DH)
+
+    const hospitalNames = DH.map((hospital) => hospital.Name);
+    console.log(hospitalNames);
+
+    // console.log(deniedJsonData);
+
+    let reqHospitals = fs.readFileSync('./files/requestedHospitals.txt', 'utf8');
+    let reqHospitalsJsonData = JSON.parse(reqHospitals);
+
+    let deniedName = reqHospitalsJsonData.map((user) => user.Name );
+    console.log(deniedName)
+
+    let deletHospitals = reqHospitalsJsonData.filter((user) => user.Name != hospitalNames);
+    console.log("requested hospitals")
+    console.log(deletHospitals);
+    console.log("filterd")
+
+    deletHospitals = JSON.stringify(deletHospitals);
+
+    fs.writeFileSync('./files/requestedHospitals.txt', deletHospitals, (err) => {
+        console.log("Saved")
+    });
+
 
 let message =`user name = ${data.userName} ` + '\n' +` password = ${strPassword}` + '\n' + "Login Link:localhost://5001/login" 
 
@@ -205,7 +226,6 @@ let message =`user name = ${data.userName} ` + '\n' +` password = ${strPassword}
 
 router.post('/denied', (req, res) => {
     const hospital = req.body;
-
     deniedHospitals.push({ ...hospital });
 
     const jsonData = JSON.stringify(deniedHospitals);
@@ -213,6 +233,35 @@ router.post('/denied', (req, res) => {
     fs.writeFileSync('./files/denied.txt', jsonData, (err) => {
         console.log("Saved")
     });
+
+    // let denied = fs.readFileSync('./files/requestedHospitals.txt', 'utf8');
+    // let deniedJsonData = JSON.parse(denied);
+
+    let DH = JSON.parse(jsonData);
+    console.log(DH)
+
+    const hospitalNames = DH.map((hospital) => hospital.Name);
+    console.log(hospitalNames);
+
+    // console.log(deniedJsonData);
+
+    let reqHospitals = fs.readFileSync('./files/requestedHospitals.txt', 'utf8');
+    let reqHospitalsJsonData = JSON.parse(reqHospitals);
+
+    let deniedName = reqHospitalsJsonData.map((user) => user.Name );
+    console.log(deniedName)
+
+    let deletHospitals = reqHospitalsJsonData.filter((user) => user.Name != hospitalNames);
+    console.log("requested hospitals")
+    console.log(deletHospitals);
+    console.log("filterd")
+
+    deletHospitals = JSON.stringify(deletHospitals);
+
+    fs.writeFileSync('./files/requestedHospitals.txt', deletHospitals, (err) => {
+        console.log("Saved")
+    });
+
 });
 
 router.get('/getRequest', (req, res) => {
