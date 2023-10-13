@@ -1,1 +1,1 @@
-[{"Name":"paulos","Address":"bishoftu","ContactNumber":"+251912345678","lat":9.026,"lng":38.7439}]
+[{"Name":"selam","Address":"","ContactNumber":"","lat":9.026,"lng":38.7439},{"Name":"selam","Address":"","ContactNumber":"","lat":9.026,"lng":38.7439},{"Name":"paulos","Address":"bishoftu","ContactNumber":"-251912345678","lat":9.026,"lng":38.7439},{"Name":"paulos","Address":"bishoftu","ContactNumber":"-251912345678","lat":9.026,"lng":38.7439},{"Name":"paulos","Address":"bishoftu","ContactNumber":"+251921068551","lat":9.026,"lng":38.7439}]

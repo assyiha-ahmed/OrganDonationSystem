@@ -1,1 +1,1 @@
-[{"userName":"@paulos","phone":"+251912345678","passwordReal":"2521","password":"$2b$10$GP0P7RC/hhYkCdU/ycUDeul2RMtAmiC2/oNUVhOHukQZIPbjq7sjK"}]
+[{"userName":"@paulos","phone":"+251977709491","passwordReal":"1753","password":"$2b$10$yB3YGAsa34x7032djG168ewN7UkijVkvzLK1VGi65mSMMSX2AxhfW"},{"userName":"@paulos","phone":"+251977709491","passwordReal":"1753","password":"$2b$10$uPufUpPCfnluaC2/M2SKdODS3rYEX7BxdWRhaglKVOhw7uSRpa.ou"}]

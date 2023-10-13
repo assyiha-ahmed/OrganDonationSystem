@@ -38,8 +38,10 @@ app.get("/logout", (req,res)=>{
         httpOnly: true, // Set the HttpOnly flag
       });
 
-    res.send('Cookie changed!');
+    //res.send('Cookie changed!');
+    res.sendFile(__dirname + "/hospitalForm.html");
 })
+
 app.get('/login', async (req, res) => {
 
     let myCookieValue = req.cookies.token || undefined;

@@ -25,7 +25,8 @@ fetch("http://localhost:5000/users/getRequest", {
         let singleBtn = allBtn[x];
    
 
-        singleBtn.addEventListener("click", ()=>{
+        singleBtn.addEventListener("click", (e)=>{
+            e.preventDefault();
             
              let allowed = requestedHospitals[x];
 
@@ -40,8 +41,9 @@ fetch("http://localhost:5000/users/getRequest", {
      let singleBtn = dBtn[y];
 
 
-     singleBtn.addEventListener("click", ()=>{
-         
+     singleBtn.addEventListener("click", (e)=>{
+        e.preventDefault(); 
+
         let denied = requestedHospitals[y];
         deniedData(denied);
 

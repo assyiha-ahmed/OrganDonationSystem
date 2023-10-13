@@ -1,1 +1,1 @@
-[]
+[{"name":"fenish","age":"41","bloodType":"O","hla_a":"03:12","hla_b":"03:12","hla_dr":"03:12","hla_dq":"03:12","size":"3cm:8cm:7cm","date":"","id":"7205b6f6-9846-4416-9494-6a6c6bb235dc"},{"name":"fenish","age":"23","bloodType":"O","hla_a":"03:12","hla_b":"03:12","hla_dr":"03:12","hla_dq":"03:12","size":"3cm:8cm:7cm","date":"2023-10-25","id":"46d97471-c99d-4287-adc4-800bbd8420c1"}]

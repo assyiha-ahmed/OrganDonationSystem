@@ -173,8 +173,6 @@ router.post('/allowed', async (req, res) => {
     const hospitalNames = DH.map((hospital) => hospital.Name);
     console.log(hospitalNames);
 
-    // console.log(deniedJsonData);
-
     let reqHospitals = fs.readFileSync('./files/requestedHospitals.txt', 'utf8');
     let reqHospitalsJsonData = JSON.parse(reqHospitals);
 
